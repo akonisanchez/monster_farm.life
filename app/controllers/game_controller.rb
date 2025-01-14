@@ -3,33 +3,31 @@
 class GameController < ApplicationController
     # Get our monster before doing anything
     before_action :get_monster
-    
+  
     # Show the main game page
     def show
       # If monster is too tired, show game over screen
-      if @monster.tiredness >= 10
-        render :game_over
-      end
+      render :game_over if @monster.tiredness >= 10
     end
-    
+  
     # This handles what happens when we click a training button
     def train
       success = @monster.train(params[:drill])
       flash[:notice] = if success
-        "Training successful!"
-      else
-        "Training failed..."
-      end
+                        "Training successful!"
+                      else
+                        "Training failed..."
+                      end
       redirect_to game_path
     end
-    
+  
     # This handles what happens when we click the rest button
     def rest
       @monster.rest
       flash[:notice] = "Scrappo took a rest"
       redirect_to game_path
     end
-    
+  
     # This resets the game when we want to start over
     def reset
       @monster.update(
@@ -41,9 +39,9 @@ class GameController < ApplicationController
       )
       redirect_to game_path
     end
-    
+  
     private
-    
+  
     # This gets or creates our monster
     def get_monster
       @monster = Monster.find_or_create_by(name: "Scrappo") do |monster|
