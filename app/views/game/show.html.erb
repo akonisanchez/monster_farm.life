@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monster Trainer</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+</head>
+<body>
+  <div class="game-container">
+    <!-- Show any game messages -->
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    
+    <div class="monster-display">
+      <h1>🐲 Scrappo</h1>
+      
+      <!-- Show monster's current stats -->
+      <div class="stats">
+        <p>Power: <%= @monster.power %></p>
+        <p>Speed: <%= @monster.speed %></p>
+        <p>Defense: <%= @monster.defense %></p>
+        <p>Health: <%= @monster.health %></p>
+        <p>Tiredness: <%= @monster.tiredness %>/10</p>
+      </div>
+      
+      <!-- Training buttons -->
+      <div class="actions">
+        <%= button_to "Sled Pull", train_path(drill: "sled_pull"), class: "action-button" %>
+        <%= button_to "Parry", train_path(drill: "parry"), class: "action-button" %>
+        <%= button_to "Meditate", train_path(drill: "meditate"), class: "action-button" %>
+        <%= button_to "200m Dash", train_path(drill: "dash"), class: "action-button" %>
+        <%= button_to "Rest", rest_path, class: "rest-button" %>
+        <%= button_to "Reset Game", reset_path, class: "reset-button" %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

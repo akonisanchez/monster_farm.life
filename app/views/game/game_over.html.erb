@@ -1,0 +1,17 @@
+<!-- This is the screen that shows when our monster gets too tired -->
+<div class="game-over">
+  <h1>Game Over!</h1>
+  <p>Scrappo got too tired and fainted!</p>
+  
+  <!-- Show the final stats -->
+  <div class="final-stats">
+    <h2>Final Stats:</h2>
+    <p>Power: <%= @monster.power %></p>
+    <p>Speed: <%= @monster.speed %></p>
+    <p>Defense: <%= @monster.defense %></p>
+    <p>Health: <%= @monster.health %></p>
+  </div>
+  
+  <!-- Button to start over -->
+  <%= button_to "Try Again", reset_path, class: "reset-button" %>
+</div>
