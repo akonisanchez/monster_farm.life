@@ -4,34 +4,85 @@
   <title>Monster Trainer</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="game-container">
-    <!-- Show any game messages -->
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-    
-    <div class="monster-display">
-      <h1>🐲 Scrappo</h1>
-      
-      <!-- Show monster's current stats -->
-      <div class="stats">
-        <p>Power: <%= @monster.power %></p>
-        <p>Speed: <%= @monster.speed %></p>
-        <p>Defense: <%= @monster.defense %></p>
-        <p>Health: <%= @monster.health %></p>
-        <p>Tiredness: <%= @monster.tiredness %>/10</p>
-      </div>
-      
-      <!-- Training buttons -->
-      <div class="actions">
-        <%= button_to "Sled Pull", train_path(drill: "sled_pull"), class: "action-button" %>
-        <%= button_to "Parry", train_path(drill: "parry"), class: "action-button" %>
-        <%= button_to "Meditate", train_path(drill: "meditate"), class: "action-button" %>
-        <%= button_to "200m Dash", train_path(drill: "dash"), class: "action-button" %>
-        <%= button_to "Rest", rest_path, class: "rest-button" %>
-        <%= button_to "Reset Game", reset_path, class: "reset-button" %>
+    <div class="game-boy">
+      <div class="game-screen">
+        <% if flash[:notice] %>
+          <div class="notice pixel-box"><%= flash[:notice] %></div>
+        <% end %>
+        
+        <div class="monster-display">
+          <h1 class="game-title">MONSTER TRAINER</h1>
+          <div class="monster-sprite">🐲</div>
+          
+          <div class="stats-box pixel-box">
+            <div class="stat-group">
+              <div class="stat-line">
+                <span class="stat-label">PWR</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill" style="width: <%= (@monster.power.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.power.to_s.rjust(3, '0') %></span>
+                </div>
+              </div>
+              
+              <div class="stat-line">
+                <span class="stat-label">SPD</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill" style="width: <%= (@monster.speed.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.speed.to_s.rjust(3, '0') %></span>
+                </div>
+              </div>
+              
+              <div class="stat-line">
+                <span class="stat-label">DEF</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill" style="width: <%= (@monster.defense.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.defense.to_s.rjust(3, '0') %></span>
+                </div>
+              </div>
+              
+              <div class="stat-line">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill" style="width: <%= (@monster.health.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.health.to_s.rjust(3, '0') %></span>
+                </div>
+              </div>
+              
+              <div class="stat-line">
+                <span class="stat-label">TIRED</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill tired-fill" style="width: <%= (@monster.tiredness.to_f / Monster::MAX_TIREDNESS * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.tiredness %>/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="menu pixel-box">
+            <div class="menu-options">
+              <%= button_to "SLED PULL", train_path(drill: "sled_pull"), class: "menu-button" %>
+              <%= button_to "PARRY", train_path(drill: "parry"), class: "menu-button" %>
+              <%= button_to "MEDITATE", train_path(drill: "meditate"), class: "menu-button" %>
+              <%= button_to "200M DASH", train_path(drill: "dash"), class: "menu-button" %>
+              <%= button_to "REST", rest_path, class: "menu-button rest" %>
+              <%= button_to "RESET", reset_path, class: "menu-button reset" %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
