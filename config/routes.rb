@@ -1,14 +1,12 @@
+# This file tells our game which web addresses go to which parts of our game
+# Think of it like a map that tells visitors where to go
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # When someone visits the homepage ('/'), show them the game
+  root 'game#show'
+  
+  # Set up addresses for different game actions
+  get '/game', to: 'game#show', as: :game    # Show the game screen
+  post '/train', to: 'game#train', as: :train # Handle training actions
+  post '/rest', to: 'game#rest', as: :rest    # Handle resting
+  post '/reset', to: 'game#reset', as: :reset # Reset the game
 end
