@@ -1,10 +1,158 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background: #1a1a1a;
+    color: #33ff33;
+    line-height: 1.6;
+  }
+  
+  .game-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .game-boy {
+    background: #8b8b8b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 
+      inset -4px -4px 0px 0px #373737,
+      inset 4px 4px 0px 0px #ffffff;
+  }
+  
+  .game-screen {
+    background: #9bbc0f;
+    padding: 20px;
+    border: 4px solid #0f380f;
+    border-radius: 5px;
+    min-height: 600px;
+  }
+  
+  .pixel-box {
+    background: #306230;
+    border: 4px solid #0f380f;
+    padding: 15px;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .game-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #0f380f;
+    text-shadow: 2px 2px 0px #8bac0f;
+  }
+  
+  .monster-sprite {
+    font-size: 48px;
+    text-align: center;
+    margin: 20px 0;
+    animation: hover 2s infinite ease-in-out;
+  }
+  
+  .stat-line {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    gap: 10px;
+  }
+  
+  .stat-label {
+    color: #0f380f;
+    width: 70px;
+    font-size: 12px;
+  }
+  
+  .stat-bar-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .stat-bar {
+    flex-grow: 1;
+    height: 12px;
+    background: #0f380f;
+    border: 2px solid #0f380f;
+  }
+  
+  .stat-fill {
+    height: 100%;
+    background: #306230;
+    transition: width 0.3s ease;
+  }
+  
+  .tired-fill {
+    background: #a44;
+  }
+  
+  .stat-value {
+    color: #0f380f;
+    width: 50px;
+    font-size: 12px;
+    text-align: right;
+  }
+  
+  .menu-options {
+    display: grid;
+    gap: 8px;
+  }
+  
+  .menu-button {
+    background: #306230;
+    color: #9bbc0f;
+    border: none;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .menu-button:hover {
+    background: #0f380f;
+    transform: translateY(-2px);
+  }
+  
+  .menu-button.rest {
+    background: #4a9;
+  }
+  
+  .menu-button.reset {
+    background: #a44;
+  }
+  
+  .notice {
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    color: #0f380f;
+  }
+  
+  @keyframes hover {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @media (max-width: 600px) {
+    .game-container {
+      margin: 10px;
+      padding: 10px;
+    }
+    
+    .game-title {
+      font-size: 18px;
+    }
+    
+    .menu-button {
+      font-size: 10px;
+    }
+  }
