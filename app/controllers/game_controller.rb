@@ -2,7 +2,7 @@
 # It handles all the game actions like training and resting
 class GameController < ApplicationController
     before_action :get_monster
-  
+
     def show
       if @monster.tiredness >= 10
         render :game_over
@@ -10,7 +10,7 @@ class GameController < ApplicationController
         render :show
       end
     end
-    
+
     def train
       success = @monster.train(params[:drill])
       flash[:notice] = if success
@@ -20,7 +20,7 @@ class GameController < ApplicationController
       end
       redirect_to game_path
     end
-  
+
     def rest
       if @monster.tiredness.zero?
         flash[:alert] = "Chocobat is already well rested!"
@@ -30,7 +30,7 @@ class GameController < ApplicationController
       end
       redirect_to game_path
     end
-  
+
     def reset
       if @monster
         @monster.update(
@@ -44,9 +44,9 @@ class GameController < ApplicationController
       end
       redirect_to game_path
     end
-  
+
     private
-  
+
     def get_monster
       @monster = Monster.find_or_create_by(name: "Chocobat") do |monster|
         monster.power = 1
@@ -56,4 +56,4 @@ class GameController < ApplicationController
         monster.tiredness = 0
       end
     end
-  end
+end
