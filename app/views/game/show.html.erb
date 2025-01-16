@@ -23,57 +23,77 @@
             <%= image_tag "choco_bat.gif", class: "monster-gif" %>
             </div>
           
-          <div class="stats-box pixel-box">
+            <div class="stats-box pixel-box">
             <div class="stat-group">
-            <div class="stat-line">
-            <span class="stat-label">PWR</span>
-            <div class="stat-bar-container">
-              <div class="stat-bar">
-                <div class="stat-fill power-fill" style="width: <%= (@monster.power.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+              <div class="stat-line">
+                <span class="stat-label">PWR</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill power-fill" style="width: <%= (@monster.power.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value" style="position: relative;">
+                    <%= @monster.power.to_s.rjust(3, '0') %>
+                    <% if flash[:stat_changes] && flash[:stat_changes]["power"] %>
+                      <span class="stat-increase">+<%= flash[:stat_changes]["power"] %></span>
+                    <% end %>
+                  </span>
+                </div>
               </div>
-              <span class="stat-value"><%= @monster.power.to_s.rjust(3, '0') %></span>
-            </div>
-          </div>
-          
-          <div class="stat-line">
-            <span class="stat-label">SPD</span>
-            <div class="stat-bar-container">
-              <div class="stat-bar">
-                <div class="stat-fill speed-fill" style="width: <%= (@monster.speed.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+              
+              <div class="stat-line">
+                <span class="stat-label">SPD</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill speed-fill" style="width: <%= (@monster.speed.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value" style="position: relative;">
+                    <%= @monster.speed.to_s.rjust(3, '0') %>
+                    <% if flash[:stat_changes] && flash[:stat_changes]["speed"] %>
+                      <span class="stat-increase">+<%= flash[:stat_changes]["speed"] %></span>
+                    <% end %>
+                  </span>
+                </div>
               </div>
-              <span class="stat-value"><%= @monster.speed.to_s.rjust(3, '0') %></span>
-            </div>
-          </div>
-          
-          <div class="stat-line">
-            <span class="stat-label">DEF</span>
-            <div class="stat-bar-container">
-              <div class="stat-bar">
-                <div class="stat-fill defense-fill" style="width: <%= (@monster.defense.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+              
+              <div class="stat-line">
+                <span class="stat-label">DEF</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill defense-fill" style="width: <%= (@monster.defense.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value" style="position: relative;">
+                    <%= @monster.defense.to_s.rjust(3, '0') %>
+                    <% if flash[:stat_changes] && flash[:stat_changes]["defense"] %>
+                      <span class="stat-increase">+<%= flash[:stat_changes]["defense"] %></span>
+                    <% end %>
+                  </span>
+                </div>
               </div>
-              <span class="stat-value"><%= @monster.defense.to_s.rjust(3, '0') %></span>
-            </div>
-          </div>
-          
-          <div class="stat-line">
-            <span class="stat-label">HP</span>
-            <div class="stat-bar-container">
-              <div class="stat-bar">
-                <div class="stat-fill health-fill" style="width: <%= (@monster.health.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+              
+              <div class="stat-line">
+                <span class="stat-label">HP</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill health-fill" style="width: <%= (@monster.health.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value" style="position: relative;">
+                    <%= @monster.health.to_s.rjust(3, '0') %>
+                    <% if flash[:stat_changes] && flash[:stat_changes]["health"] %>
+                      <span class="stat-increase">+<%= flash[:stat_changes]["health"] %></span>
+                    <% end %>
+                  </span>
+                </div>
               </div>
-              <span class="stat-value"><%= @monster.health.to_s.rjust(3, '0') %></span>
-            </div>
-          </div>
-          
-          <div class="stat-line">
-            <span class="stat-label">TIRED</span>
-            <div class="stat-bar-container">
-              <div class="stat-bar">
-                <div class="stat-fill" style="width: <%= (@monster.tiredness.to_f / Monster::MAX_TIREDNESS * 100).to_s %>%;"></div>
+              
+              <div class="stat-line">
+                <span class="stat-label">TIRED</span>
+                <div class="stat-bar-container">
+                  <div class="stat-bar">
+                    <div class="stat-fill" style="width: <%= (@monster.tiredness.to_f / Monster::MAX_TIREDNESS * 100).to_s %>%;"></div>
+                  </div>
+                  <span class="stat-value"><%= @monster.tiredness %>/10</span>
+                </div>
               </div>
-              <span class="stat-value"><%= @monster.tiredness %>/10</span>
-            </div>
-          </div>
             </div>
           </div>
           

@@ -12,6 +12,7 @@ class Monster < ApplicationRecord
       return false if tiredness >= MAX_TIREDNESS
 
       success = rand(100) < 85
+      old_stats = { power: power, defense: defense, health: health, speed: speed }
 
       if success
         case drill_type
@@ -29,8 +30,17 @@ class Monster < ApplicationRecord
         self.tiredness += 2
       end
 
-      save
-      success
+      if save && success
+        # Return stat changes
+        {
+          power: power - old_stats[:power],
+          defense: defense - old_stats[:defense],
+          health: health - old_stats[:health],
+          speed: speed - old_stats[:speed]
+        }.select { |_, v| v > 0 }
+      else
+        false
+      end
     end
 
     def rest
@@ -41,6 +51,6 @@ class Monster < ApplicationRecord
     end
 
     def game_over?
-        tiredness >= MAX_TIREDNESS
-      end
+      tiredness >= MAX_TIREDNESS
+    end
 end
