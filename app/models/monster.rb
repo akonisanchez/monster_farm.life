@@ -39,4 +39,9 @@ class Monster < ApplicationRecord
       self.tiredness = [ 0, tiredness - recovery ].max
       save
     end
+
+    def game_over?
+        tiredness >= MAX_TIREDNESS
+      end
+      
 end
