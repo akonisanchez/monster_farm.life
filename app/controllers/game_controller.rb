@@ -12,11 +12,12 @@ class GameController < ApplicationController
     end
 
     def train
-      success = @monster.train(params[:drill])
-      flash[:notice] = if success
-        "Training successful!"
+      result = @monster.train(params[:drill])
+      if result.is_a?(Hash) # Training succeeded with stat changes
+        flash[:notice] = "Training successful!"
+        flash[:stat_changes] = result
       else
-        "Training failed..."
+        flash[:alert] = "Training failed..."
       end
       redirect_to game_path
     end
