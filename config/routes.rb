@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "game#show"
+  root 'welcome#index'
   get "/game", to: "game#show", as: :game
   post "/train", to: "game#train", as: :train
   post "/rest", to: "game#rest", as: :rest
