@@ -1,4 +1,6 @@
 class Monster < ApplicationRecord
+    belongs_to :user, optional: true
+
     MAX_STAT = 999
     MAX_TIREDNESS = 10
 
