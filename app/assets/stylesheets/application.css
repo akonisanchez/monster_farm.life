@@ -313,6 +313,46 @@
     width: 80%;
   }
 
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-input {
+    background: #9bbc0f;
+    border: 2px solid #0f380f;
+    color: #0f380f;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  .auth-links {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .error-messages {
+    background: #a44;
+    border: 2px solid #0f380f;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .error-messages p {
+    font-size: 10px;
+    margin: 5px 0;
+  }
+  
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
