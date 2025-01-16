@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MonsterFarm.Life - Login</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-boy">
+      <div class="game-screen">
+        <h1 class="game-title">Login</h1>
+        
+        <div class="pixel-box">
+          <%= form_tag login_path, class: "auth-form" do %>
+            <div class="form-group">
+              <%= label_tag :username %>
+              <%= text_field_tag :username, nil, class: "form-input" %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :password %>
+              <%= password_field_tag :password, nil, class: "form-input" %>
+            </div>
+
+            <%= submit_tag "LOGIN", class: "menu-button" %>
+          <% end %>
+          
+          <div class="auth-links">
+            <%= link_to "Register New Account", signup_path, class: "menu-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
