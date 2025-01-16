@@ -8,7 +8,7 @@ class Monster < ApplicationRecord
     validates :tiredness,
       numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: MAX_TIREDNESS }
 
-    # rubocop:disable Metrics/MethodLength  
+    # rubocop:disable Metrics/MethodLength
     def train(drill_type)
       return false if tiredness >= MAX_TIREDNESS
 
