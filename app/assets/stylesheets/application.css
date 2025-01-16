@@ -1,95 +1,95 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
   
   body {
-    font-family: 'Press Start 2P', cursive;
     background: #1a1a1a;
     color: #33ff33;
+    font-family: 'Press Start 2P', cursive;
     line-height: 1.6;
   }
   
   .game-container {
-    max-width: 800px;
     margin: 20px auto;
+    max-width: 800px;
     padding: 20px;
   }
   
   .game-boy {
     background: #8b8b8b;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 
       inset -4px -4px 0px 0px #373737,
       inset 4px 4px 0px 0px #ffffff;
+    padding: 20px;
   }
   
   .game-screen {
     background: #9bbc0f;
-    padding: 20px;
     border: 4px solid #0f380f;
     border-radius: 5px;
     min-height: 600px;
+    padding: 20px;
   }
   
   .pixel-box {
     background: #306230;
     border: 4px solid #0f380f;
-    padding: 15px;
     margin: 10px 0;
+    padding: 15px;
     position: relative;
   }
   
   .game-title {
-    text-align: center;
+    color: #0f380f;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #0f380f;
+    text-align: center;
     text-shadow: 2px 2px 0px #8bac0f;
   }
   
   .monster-sprite {
-    text-align: center;
     margin: 20px 0;
+    text-align: center;
   }
   
   .monster-gif {
-    max-width: 300px;
     height: auto;
+    max-width: 300px;
   }
-
+  
   .stat-line {
-    display: flex;
     align-items: center;
-    margin: 8px 0;
+    display: flex;
     gap: 10px;
+    margin: 8px 0;
   }
   
   .stat-label {
     color: #0f380f;
-    width: 70px;
     font-size: 12px;
+    width: 70px;
   }
   
   .stat-bar-container {
-    flex-grow: 1;
-    display: flex;
     align-items: center;
+    display: flex;
+    flex-grow: 1;
     gap: 10px;
   }
   
   .stat-bar {
-    flex-grow: 1;
-    height: 12px;
     background: #0f380f;
     border: 2px solid #0f380f;
+    flex-grow: 1;
+    height: 12px;
   }
   
   .stat-fill {
-    height: 100%;
     background: #306230;  /* Default dark green for tiredness */
+    height: 100%;
     transition: width 0.3s ease;
   }
   
@@ -115,9 +115,9 @@
   
   .stat-value {
     color: #0f380f;
-    width: 50px;
     font-size: 12px;
     text-align: right;
+    width: 50px;
   }
   
   .menu-options {
@@ -127,18 +127,41 @@
   
   .menu-button {
     background: #306230;
-    color: #9bbc0f;
     border: none;
-    padding: 10px;
+    color: #9bbc0f;
+    cursor: pointer;
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
-    cursor: pointer;
+    padding: 10px;
+    position: relative;
     transition: all 0.2s ease;
   }
   
   .menu-button:hover {
     background: #0f380f;
     transform: translateY(-2px);
+  }
+  
+  .menu-button::after {
+    background: #0f380f;
+    border: 2px solid #306230;
+    bottom: 100%;
+    color: #9bbc0f;
+    content: attr(data-tooltip);
+    font-size: 10px;
+    left: 50%;
+    opacity: 0;
+    padding: 8px;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  
+  .menu-button:hover::after {
+    opacity: 1;
   }
   
   .menu-button.rest {
@@ -150,41 +173,74 @@
   }
   
   .notice {
-    text-align: center;
+    animation: slideDown 0.5s ease-out;
+    color: #0f380f;
     margin: 10px 0;
     padding: 10px;
-    color: #0f380f;
-    animation: slideDown 0.5s ease-out;
-}
-
-.notice.alert {
+    text-align: center;
+  }
+  
+  .notice.alert {
+    animation: slideDown 0.5s ease-out, shake 0.5s ease-in-out;
     background: #a44;
     color: #fff;
-    animation: slideDown 0.5s ease-out, shake 0.5s ease-in-out;
-}
-
+  }
+  
+  .game-over {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .fainted {
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+  
+  .blink {
+    animation: blink 1s infinite;
+  }
+  
   @keyframes hover {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+    50% { 
+      transform: translateY(-10px); 
+    }
   }
   
   @keyframes slideDown {
     from {
-      transform: translateY(-20px);
       opacity: 0;
+      transform: translateY(-20px);
     }
     to {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateY(0);
     }
   }
-
+  
   @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+    0%, 100% { 
+      transform: translateX(0); 
+    }
+    25% { 
+      transform: translateX(-5px); 
+    }
+    75% { 
+      transform: translateX(5px); 
+    }
   }
-
+  
+  @keyframes blink {
+    0%, 100% { 
+      opacity: 1; 
+    }
+    50% { 
+      opacity: 0.5; 
+    }
+  }
+  
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
@@ -198,49 +254,4 @@
     .menu-button {
       font-size: 10px;
     }
-  }
-
-  .game-over {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .fainted {
-    opacity: 0.5;
-    filter: grayscale(100%);
-  }
-  
-  .blink {
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .menu-button {
-    position: relative; 
-  }
-
-  .menu-button::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px;
-    background: #0f380f;
-    color: #9bbc0f;
-    font-size: 10px;
-    border: 2px solid #306230;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    white-space: nowrap;
-    z-index: 10;
-  }
-  
-  .menu-button:hover::after {
-    opacity: 1;
   }
