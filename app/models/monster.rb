@@ -43,5 +43,4 @@ class Monster < ApplicationRecord
     def game_over?
         tiredness >= MAX_TIREDNESS
       end
-      
 end
