@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MonsterFarm.Life - Welcome</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-boy">
+      <div class="game-screen">
+        <div class="welcome-content">
+          <h1 class="game-title">MonsterFarm.Life</h1>
+          
+          <div class="pixel-box welcome-message">
+            <p>Set off on your adventure to become the #1 monster tamer!</p>
+            <div class="monster-sprite">
+              <%= image_tag "choco_bat.gif", class: "monster-gif" %>
+            </div>
+          </div>
+          
+          <div class="pixel-box welcome-buttons">
+            <%= link_to "START YOUR JOURNEY", "#", class: "menu-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
