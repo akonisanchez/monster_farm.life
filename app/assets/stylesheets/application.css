@@ -86,9 +86,26 @@
   
   .stat-fill {
     height: 100%;
-    background: #306230;
+    background: #306230;  /* Default dark green for tiredness */
     transition: width 0.3s ease;
   }
+  
+  .power-fill {
+    background: #FFD700;  /* Yellow for power */
+  }
+  
+  .speed-fill {
+    background: #32CD32;  /* Lime green for speed */
+  }
+  
+  .defense-fill {
+    background: #4169E1;  /* Royal blue for defense */
+  }
+  
+  .health-fill {
+    background: #DC143C;  /* Crimson red for health */
+  }
+  
   
   .tired-fill {
     background: #a44;
