@@ -241,6 +241,42 @@
     }
   }
   
+  .stat-increase {
+    animation: fadeOutUp 1.5s ease-out forwards;
+    background: #159076;
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    left: 100%;
+    margin-left: 8px;
+    opacity: 0;
+    padding: 4px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+  
+  @keyframes fadeOutUp {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-70%);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(-90%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-110%);
+    }
+  }
+
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;

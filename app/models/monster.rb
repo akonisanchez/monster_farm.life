@@ -8,10 +8,12 @@ class Monster < ApplicationRecord
     validates :tiredness,
       numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: MAX_TIREDNESS }
 
+    # rubocop:disable Metrics/MethodLength
     def train(drill_type)
       return false if tiredness >= MAX_TIREDNESS
 
       success = rand(100) < 85
+      old_stats = { power: power, defense: defense, health: health, speed: speed }
 
       if success
         case drill_type
@@ -29,9 +31,19 @@ class Monster < ApplicationRecord
         self.tiredness += 2
       end
 
-      save
-      success
+      if save && success
+        # Return stat changes
+        {
+          power: power - old_stats[:power],
+          defense: defense - old_stats[:defense],
+          health: health - old_stats[:health],
+          speed: speed - old_stats[:speed]
+        }.select { |_, v| v > 0 }
+      else
+        false
+      end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def rest
       return false if tiredness >= MAX_TIREDNESS
@@ -41,6 +53,6 @@ class Monster < ApplicationRecord
     end
 
     def game_over?
-        tiredness >= MAX_TIREDNESS
-      end
+      tiredness >= MAX_TIREDNESS
+    end
 end
