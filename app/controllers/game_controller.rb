@@ -23,16 +23,15 @@ class GameController < ApplicationController
       redirect_to game_path
     end
 
-    def reset
-      @monster.update(
-        power: 1,
-        speed: 1,
-        defense: 1,
-        health: 1,
-        tiredness: 0
-      )
-      redirect_to game_path
-    end
+    def rest
+        if @monster.tiredness.zero?
+          flash[:alert] = "Scrappo is already well rested!"
+        else
+          @monster.rest
+          flash[:notice] = "Scrappo took a rest"
+        end
+        redirect_to game_path
+      end
 
     private
 

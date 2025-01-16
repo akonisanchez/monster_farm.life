@@ -13,6 +13,9 @@
         <% if flash[:notice] %>
           <div class="notice pixel-box"><%= flash[:notice] %></div>
         <% end %>
+        <% if flash[:alert] %>
+            <div class="notice alert pixel-box"><%= flash[:alert] %></div>
+        <% end %>
         
         <div class="monster-display">
           <h1 class="game-title">MonsterFarm.Life</h1>
