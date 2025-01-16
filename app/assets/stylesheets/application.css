@@ -51,12 +51,15 @@
   }
   
   .monster-sprite {
-    font-size: 48px;
     text-align: center;
     margin: 20px 0;
-    animation: hover 2s infinite ease-in-out;
   }
   
+  .monster-gif {
+    max-width: 300px;
+    height: auto;
+  }
+
   .stat-line {
     display: flex;
     align-items: center;
@@ -181,7 +184,7 @@
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
   }
-  
+
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
