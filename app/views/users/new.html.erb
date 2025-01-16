@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MonsterFarm.Life - Register</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-boy">
+      <div class="game-screen">
+        <h1 class="game-title">Register</h1>
+        
+        <div class="pixel-box">
+          <%= form_for @user, url: signup_path, html: { class: "auth-form" } do |f| %>
+            <% if @user.errors.any? %>
+              <div class="error-messages">
+                <% @user.errors.full_messages.each do |msg| %>
+                  <p><%= msg %></p>
+                <% end %>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :username %>
+              <%= f.text_field :username, class: "form-input" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: "form-input" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: "form-input" %>
+            </div>
+
+            <%= f.submit "CREATE ACCOUNT", class: "menu-button" %>
+          <% end %>
+          
+          <div class="auth-links">
+            <%= link_to "Back to Login", login_path, class: "menu-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
