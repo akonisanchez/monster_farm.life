@@ -1,6 +1,7 @@
 # This is the main controller for our game
 # It handles all the game actions like training and resting
 class GameController < ApplicationController
+    before_action :require_user
     before_action :get_monster
 
     def show
