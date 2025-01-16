@@ -277,6 +277,42 @@
     }
   }
 
+  .welcome-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+    text-align: center;
+  }
+  
+  .welcome-message {
+    color: #0f380f;
+    font-size: 14px;
+    line-height: 2;
+    margin: 20px 0;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  .welcome-message p {
+    margin-bottom: 20px;
+  }
+  
+  .welcome-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .welcome-buttons .menu-button {
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    width: 80%;
+  }
+
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
