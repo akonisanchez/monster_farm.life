@@ -106,7 +106,6 @@
     background: #DC143C;  /* Crimson red for health */
   }
   
-  
   .tired-fill {
     background: #a44;
   }
@@ -152,11 +151,35 @@
     margin: 10px 0;
     padding: 10px;
     color: #0f380f;
-  }
-  
+    animation: slideDown 0.5s ease-out;
+}
+
+.notice.alert {
+    background: #a44;
+    color: #fff;
+    animation: slideDown 0.5s ease-out, shake 0.5s ease-in-out;
+}
+
   @keyframes hover {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
   }
   
   @media (max-width: 600px) {
