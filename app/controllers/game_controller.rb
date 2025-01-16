@@ -42,7 +42,7 @@ class GameController < ApplicationController
           health: 1,
           tiredness: 0
         )
-        flash[:notice] = "Game reset! Good luck!"
+        flash[:notice] = "Monster reborn! Good luck!"
       end
       redirect_to game_path
     end
@@ -50,12 +50,14 @@ class GameController < ApplicationController
     private
 
     def get_monster
-      @monster = Monster.find_or_create_by(name: "Chocobat") do |monster|
-        monster.power = 1
-        monster.speed = 1
-        monster.defense = 1
-        monster.health = 1
-        monster.tiredness = 0
+      @monster = current_user.monster ||
+                 current_user.create_monster(
+                    name: "Chocobat",
+                    power: 1,
+                    speed: 1,
+                    defense: 1,
+                    health: 1,
+                    tiredness: 0
+                 )
       end
-    end
 end
