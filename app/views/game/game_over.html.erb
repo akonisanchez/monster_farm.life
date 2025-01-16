@@ -1,17 +1,47 @@
-<!-- This is the screen that shows when our monster gets too tired -->
-<div class="game-over">
-  <h1>Game Over!</h1>
-  <p>Scrappo got too tired and fainted!</p>
-  
-  <!-- Show the final stats -->
-  <div class="final-stats">
-    <h2>Final Stats:</h2>
-    <p>Power: <%= @monster.power %></p>
-    <p>Speed: <%= @monster.speed %></p>
-    <p>Defense: <%= @monster.defense %></p>
-    <p>Health: <%= @monster.health %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MonsterFarm.Life - Game Over</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-boy">
+      <div class="game-screen">
+        <div class="game-over">
+          <h1 class="game-title">GAME OVER</h1>
+          <div class="monster-sprite fainted">
+            <%= image_tag "choco_bat.gif", class: "monster-gif" %>
+          </div>
+          
+          <div class="pixel-box">
+            <h2>Final Stats:</h2>
+            <div class="stat-line">
+              <span class="stat-label">PWR:</span>
+              <span class="stat-value"><%= @monster.power.to_s.rjust(3, '0') %></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">SPD:</span>
+              <span class="stat-value"><%= @monster.speed.to_s.rjust(3, '0') %></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">DEF:</span>
+              <span class="stat-value"><%= @monster.defense.to_s.rjust(3, '0') %></span>
+            </div>
+            <div class="stat-line">
+              <span class="stat-label">HP:</span>
+              <span class="stat-value"><%= @monster.health.to_s.rjust(3, '0') %></span>
+            </div>
+          </div>
+          
+          <%= form_tag reset_path, method: :post do %>
+            <%= submit_tag "TRY AGAIN", class: "menu-button reset blink" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <!-- Button to start over -->
-  <%= button_to "Try Again", reset_path, class: "reset-button" %>
-</div>
+</body>
+</html>
