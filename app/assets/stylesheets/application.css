@@ -352,7 +352,41 @@
     font-size: 10px;
     margin: 5px 0;
   }
+
+  .nav-container {
+    background: #306230;
+    border-bottom: 4px solid #0f380f;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    width: 100%;
+  }
   
+  .nav-content {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .user-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .username-display {
+    color: #9bbc0f;
+    font-size: 12px;
+    text-shadow: 1px 1px 0px #0f380f;
+  }
+  
+  .nav-button {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
