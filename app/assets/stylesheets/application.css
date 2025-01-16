@@ -218,3 +218,29 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
   }
+
+  .menu-button {
+    position: relative; 
+  }
+
+  .menu-button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background: #0f380f;
+    color: #9bbc0f;
+    font-size: 10px;
+    border: 2px solid #306230;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  
+  .menu-button:hover::after {
+    opacity: 1;
+  }
