@@ -1,0 +1,10 @@
+<div class="nav-container">
+  <div class="nav-content">
+    <% if logged_in? %>
+      <div class="user-info">
+        <span class="username-display"><%= current_user.username %></span>
+        <%= button_to "LOGOUT", logout_path, method: :delete, class: "menu-button nav-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
