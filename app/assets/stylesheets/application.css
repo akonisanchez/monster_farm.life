@@ -387,6 +387,65 @@
     padding: 5px 10px;
   }
 
+  .monster-selection {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 20px 0;
+  }
+  
+  .monster-option {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .monster-option h2 {
+    color: #0f380f;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .monster-preview {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 120px;
+  }
+  
+  .monster-description {
+    color: #0f380f;
+    font-size: 10px;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  .stat-preview {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .stat-mini {
+    background: #0f380f;
+    color: #9bbc0f;
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+  
+  .selection-info {
+    color: #0f380f;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .selection-info .warning {
+    color: #a44;
+    margin-top: 10px;
+  }
+  
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
