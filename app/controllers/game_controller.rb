@@ -5,6 +5,7 @@ class GameController < ApplicationController
     before_action :get_monster
 
     def show
+      redirect_to monster_selection_path unless @monster
       if @monster.tiredness >= 10
         render :game_over
       else
