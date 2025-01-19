@@ -20,55 +20,55 @@ class UsersController < ApplicationController
     when "chocobat"
       monster = current_user.create_monster(
         name: "Chocobat",
-        power: 5,
-        speed: 5,
-        defense: 1,
-        health: 1,
+        power: 25,
+        speed: 35,
+        defense: 20,
+        health: 20,
         tiredness: 0
       )
     when "flopower"
       monster = current_user.create_monster(
         name: "Flopower",
-        power: 5,
-        speed: 1,
-        defense: 5,
-        health: 1,
+        power: 30,
+        speed: 15,
+        defense: 35,
+        health: 20,
         tiredness: 0
       )
     when "galoot"
       monster = current_user.create_monster(
         name: "Galoot",
-        power: 3,
-        speed: 3,
-        defense: 3,
-        health: 3,
+        power: 33,
+        speed: 33,
+        defense: 33,
+        health: 33,
         tiredness: 0
       )
     when "pompador"
       monster = current_user.create_monster(
         name: "Pompador",
-        power: 3,
-        speed: 1,
-        defense: 2,
-        health: 2,
+        power: 22,
+        speed: 28,
+        defense: 20,
+        health: 30,
         tiredness: 0
       )
     when "enoki"
       monster = current_user.create_monster(
         name: "Enoki",
-        power: 1,
-        speed: 2,
-        defense: 3,
-        health: 5,
+        power: 15,
+        speed: 10,
+        defense: 30,
+        health: 45,
         tiredness: 0
       )
     when "shinka"
       monster = current_user.create_monster(
         name: "Shinka",
-        power: 5,
-        speed: 3,
-        defense: 4,
-        health: 2,
+        power: 30,
+        speed: 40,
+        defense: 15,
+        health: 15,
         tiredness: 0
       )
     end
