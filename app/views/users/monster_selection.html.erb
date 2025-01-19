@@ -36,6 +36,24 @@
                 form: { onsubmit: "return confirm('Are you sure you want to choose Chocobat?');" } %>
           </div>
 
+          <!-- Pompador -->
+          <div class="monster-option pixel-box">
+            <h2>Pompador</h2>
+            <div class="monster-preview">
+              <%= image_tag "pompador.gif", class: "monster-gif" %>
+            </div>
+            <p class="monster-description">The sophisticated monster. It's relative is vastly famous but not nearly as elegant.</p>
+            <div class="stat-preview">
+              <div class="stat-mini">PWR: 3</div>
+              <div class="stat-mini">SPD: 1</div>
+              <div class="stat-mini">DEF: 2</div>
+              <div class="stat-mini">HP: 2</div>
+            </div>
+            <%= button_to "Choose Pompador", choose_monster_path(monster_type: 'pompador'), 
+                class: "menu-button",
+                form: { onsubmit: "return confirm('Are you sure you want to choose Pompador?');" } %>
+          </div>
+
           <!-- Flopower -->
           <div class="monster-option pixel-box">
             <h2>Flopower</h2>
@@ -53,24 +71,60 @@
                 class: "menu-button",
                 form: { onsubmit: "return confirm('Are you sure you want to choose Flopower?');" } %>
           </div>
-
-          <!-- Galoot -->
-          <div class="monster-option pixel-box">
-            <h2>Galoot</h2>
-            <div class="monster-preview">
-              <%= image_tag "Galoot.gif", class: "monster-gif" %>
-            </div>
-            <p class="monster-description">The mysterious monster. Scientists are still puzzled by this creature and we are unaware of its full capabilities.</p>
-            <div class="stat-preview">
-              <div class="stat-mini">PWR: 3</div>
-              <div class="stat-mini">SPD: 3</div>
-              <div class="stat-mini">DEF: 3</div>
-              <div class="stat-mini">HP: 3</div>
-            </div>
-            <%= button_to "Choose Galoot", choose_monster_path(monster_type: 'galoot'), 
-                class: "menu-button",
-                form: { onsubmit: "return confirm('Are you sure you want to choose Galoot?');" } %>
+        
+        <!-- Enoki -->
+        <div class="monster-option pixel-box">
+          <h2>Enoki</h2>
+          <div class="monster-preview">
+            <%= image_tag "enoki.gif", class: "monster-gif" %>
           </div>
+          <p class="monster-description">The poisonous monster. It's said that it's toxic spores can be used for medical research.</p>
+          <div class="stat-preview">
+            <div class="stat-mini">PWR: 1</div>
+            <div class="stat-mini">SPD: 2</div>
+            <div class="stat-mini">DEF: 3</div>
+            <div class="stat-mini">HP: 5</div>
+          </div>
+          <%= button_to "Choose Enoki", choose_monster_path(monster_type: 'enoki'), 
+              class: "menu-button",
+              form: { onsubmit: "return confirm('Are you sure you want to choose Enoki?');" } %>
+        </div>
+
+        <!-- Galoot -->
+        <div class="monster-option pixel-box">
+          <h2>Galoot</h2>
+          <div class="monster-preview">
+            <%= image_tag "Galoot.gif", class: "monster-gif" %>
+          </div>
+          <p class="monster-description">The mysterious monster. Scientists are still puzzled by this creature and we are unaware of its full capabilities.</p>
+          <div class="stat-preview">
+            <div class="stat-mini">PWR: 3</div>
+            <div class="stat-mini">SPD: 3</div>
+            <div class="stat-mini">DEF: 3</div>
+            <div class="stat-mini">HP: 3</div>
+          </div>
+          <%= button_to "Choose Galoot", choose_monster_path(monster_type: 'galoot'), 
+              class: "menu-button",
+              form: { onsubmit: "return confirm('Are you sure you want to choose Galoot?');" } %>
+        </div>
+
+        <!-- Shinka -->
+        <div class="monster-option pixel-box">
+          <h2>Shinka</h2>
+          <div class="monster-preview">
+            <%= image_tag "shinka.gif", class: "monster-gif" %>
+          </div>
+          <p class="monster-description">The boisterous monster. It is said to have the vitality of an entire army.</p>
+          <div class="stat-preview">
+            <div class="stat-mini">PWR: 5</div>
+            <div class="stat-mini">SPD: 3</div>
+            <div class="stat-mini">DEF: 4</div>
+            <div class="stat-mini">HP: 2</div>
+          </div>
+          <%= button_to "Choose Shinka", choose_monster_path(monster_type: 'shinka'), 
+              class: "menu-button",
+              form: { onsubmit: "return confirm('Are you sure you want to choose Shinka?');" } %>
+        </div>
         </div>
       </div>
     </div>
