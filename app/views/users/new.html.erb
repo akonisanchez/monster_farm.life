@@ -15,10 +15,13 @@
         <div class="pixel-box">
           <%= form_for @user, url: signup_path, html: { class: "auth-form" } do |f| %>
             <% if @user.errors.any? %>
-              <div class="error-messages">
-                <% @user.errors.full_messages.each do |msg| %>
-                  <p><%= msg %></p>
-                <% end %>
+              <div class="error-box pixel-box">
+                <h3 class="error-heading">Registration failed:</h3>
+                <ul class="error-list">
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
               </div>
             <% end %>
 
