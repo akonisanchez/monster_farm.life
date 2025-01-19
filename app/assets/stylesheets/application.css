@@ -488,7 +488,7 @@
   .message-box p {
     margin: 10px 0;
   }
-  
+
   @media (max-width: 600px) {
     .game-container {
       margin: 10px;
