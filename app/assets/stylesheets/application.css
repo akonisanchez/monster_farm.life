@@ -167,11 +167,7 @@
   .menu-button.rest {
     background: #4a9;
   }
-  
-  .menu-button.reset {
-    background: #a44;
-  }
-  
+    
   .notice {
     animation: slideDown 0.5s ease-out;
     color: #0f380f;
