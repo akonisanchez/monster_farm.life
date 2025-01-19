@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to monster_selection_path, notice: "Welcome to MonsterFarm.Life! Choose your monster."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
