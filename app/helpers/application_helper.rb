@@ -7,6 +7,12 @@ module ApplicationHelper
         "flopower.gif"
       when "Galoot"
         "Galoot.gif"
+      when "Pompador"
+        "pompador.gif"
+      when "Enoki"
+        "enoki.gif"
+      when "Shinka"
+        "shinka.gif"
       end
     end
 end
