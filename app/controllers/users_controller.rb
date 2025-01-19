@@ -44,6 +44,33 @@ class UsersController < ApplicationController
         health: 3,
         tiredness: 0
       )
+    when "pompador"
+      monster = current_user.create_monster(
+        name: "Pompador",
+        power: 3,
+        speed: 1,
+        defense: 2,
+        health: 2,
+        tiredness: 0
+      )
+    when "enoki"
+      monster = current_user.create_monster(
+        name: "Enoki",
+        power: 1,
+        speed: 2,
+        defense: 3,
+        health: 5,
+        tiredness: 0
+      )
+    when "shinka"
+      monster = current_user.create_monster(
+        name: "Shinka",
+        power: 5,
+        speed: 3,
+        defense: 4,
+        health: 2,
+        tiredness: 0
+      )
     end
 
     redirect_to game_path
