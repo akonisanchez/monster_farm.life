@@ -13,7 +13,7 @@
         <div class="game-over">
           <h1 class="game-title">GAME OVER</h1>
           <div class="monster-sprite fainted">
-            <%= image_tag "choco_bat.gif", class: "monster-gif" %>
+            <%= image_tag monster_image(@monster), class: "monster-gif" %>
           </div>
           
           <div class="pixel-box">
@@ -36,9 +36,12 @@
             </div>
           </div>
           
-          <%= form_tag reset_path, method: :post do %>
-            <%= submit_tag "TRY AGAIN", class: "menu-button reset blink" %>
-          <% end %>
+          <div class="pixel-box message-box">
+            <p>Your <%= @monster.name %> has fainted from exhaustion!</p>
+            <p>Head back to the lab to choose a new partner...</p>
+          </div>
+          
+          <%= button_to "RETURN TO LAB", monster_selection_path, method: :get, class: "menu-button reset blink" %>
         </div>
       </div>
     </div>

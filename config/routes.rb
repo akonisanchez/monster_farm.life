@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  get 'monster_selection', to: 'users#monster_selection'
+  get 'monster_selection', to: 'users#monster_selection', as: :monster_selection
   post 'choose_monster', to: 'users#choose_monster'
   
   # Game routes

@@ -476,6 +476,18 @@
     left: 0;
     position: absolute;
   }
+
+  .message-box {
+    color: #0f380f;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .message-box p {
+    margin: 10px 0;
+  }
   
   @media (max-width: 600px) {
     .game-container {
