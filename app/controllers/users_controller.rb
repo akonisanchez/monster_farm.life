@@ -13,10 +13,11 @@ class UsersController < ApplicationController
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def choose_monster
     type = params[:monster_type]
     case type
-    when 'chocobat'
+    when "chocobat"
       monster = current_user.create_monster(
         name: "Chocobat",
         power: 5,
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
         health: 1,
         tiredness: 0
       )
-    when 'flopower'
+    when "flopower"
       monster = current_user.create_monster(
         name: "Flopower",
         power: 5,
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
         health: 1,
         tiredness: 0
       )
-    when 'galoot'
+    when "galoot"
       monster = current_user.create_monster(
         name: "Galoot",
         power: 3,
@@ -44,10 +45,10 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     end
-    
+
     redirect_to game_path
   end
-
+  # rubocop:enable Metrics/MethodLength
   private
 
   def user_params
