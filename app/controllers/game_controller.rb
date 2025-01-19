@@ -35,20 +35,6 @@ class GameController < ApplicationController
     redirect_to game_path
   end
 
-  def reset
-    if @monster
-      @monster.update(
-        power: 1,
-        speed: 1,
-        defense: 1,
-        health: 1,
-        tiredness: 0
-      )
-      flash[:notice] = "Monster reborn! Good luck!"
-    end
-    redirect_to game_path
-  end
-
   private
 
   def get_monster
