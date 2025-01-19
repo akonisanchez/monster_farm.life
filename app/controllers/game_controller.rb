@@ -7,7 +7,7 @@ class GameController < ApplicationController
   def show
     redirect_to monster_selection_path unless @monster
     if @monster.tiredness >= 10
-      @monster.destroy #Delete the exhausted monster
+      @monster.destroy # Delete the exhausted monster
       render :game_over
     else
       render :show
