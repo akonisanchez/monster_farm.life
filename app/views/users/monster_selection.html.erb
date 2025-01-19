@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MonsterFarm.Life - Choose Your Monster</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-boy">
+      <div class="game-screen">
+        <h1 class="game-title">Choose Your Partner</h1>
+        
+        <div class="pixel-box selection-info">
+          <p>Select your partner monster that you'd like to train.</p>
+          <p class="warning">Choose wisely! You cannot change your choice later.</p>
+        </div>
+
+        <div class="monster-selection">
+          <!-- Chocobat -->
+          <div class="monster-option pixel-box">
+            <h2>Chocobat</h2>
+            <div class="monster-preview">
+              <%= image_tag "choco_bat.gif", class: "monster-gif" %>
+            </div>
+            <p class="monster-description">The stealthy monster. It takes pride in its ability to attack fiercely and evade danger with its sonar senses.</p>
+            <div class="stat-preview">
+              <div class="stat-mini">PWR: 5</div>
+              <div class="stat-mini">SPD: 5</div>
+              <div class="stat-mini">DEF: 1</div>
+              <div class="stat-mini">HP: 1</div>
+            </div>
+            <%= button_to "Choose Chocobat", choose_monster_path(monster_type: 'chocobat'), 
+                class: "menu-button", 
+                form: { onsubmit: "return confirm('Are you sure you want to choose Chocobat?');" } %>
+          </div>
+
+          <!-- Flopower -->
+          <div class="monster-option pixel-box">
+            <h2>Flopower</h2>
+            <div class="monster-preview">
+              <%= image_tag "flopower.gif", class: "monster-gif" %>
+            </div>
+            <p class="monster-description">The unruly monster. It was once a neglected houseplant, now reborn and adapted to no longer need light to survive.</p>
+            <div class="stat-preview">
+              <div class="stat-mini">PWR: 5</div>
+              <div class="stat-mini">SPD: 1</div>
+              <div class="stat-mini">DEF: 5</div>
+              <div class="stat-mini">HP: 1</div>
+            </div>
+            <%= button_to "Choose Flopower", choose_monster_path(monster_type: 'flopower'), 
+                class: "menu-button",
+                form: { onsubmit: "return confirm('Are you sure you want to choose Flopower?');" } %>
+          </div>
+
+          <!-- Galoot -->
+          <div class="monster-option pixel-box">
+            <h2>Galoot</h2>
+            <div class="monster-preview">
+              <%= image_tag "Galoot.gif", class: "monster-gif" %>
+            </div>
+            <p class="monster-description">The mysterious monster. Scientists are still puzzled by this creature and we are unaware of its full capabilities.</p>
+            <div class="stat-preview">
+              <div class="stat-mini">PWR: 3</div>
+              <div class="stat-mini">SPD: 3</div>
+              <div class="stat-mini">DEF: 3</div>
+              <div class="stat-mini">HP: 3</div>
+            </div>
+            <%= button_to "Choose Galoot", choose_monster_path(monster_type: 'galoot'), 
+                class: "menu-button",
+                form: { onsubmit: "return confirm('Are you sure you want to choose Galoot?');" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
