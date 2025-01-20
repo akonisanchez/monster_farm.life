@@ -2,6 +2,8 @@
 
 A retro-style monster training simulator where you can raise and train different monsters, built with Ruby on Rails featuring a GameBoy-inspired interface.
 
+![Game Preview](app/assets/images/game_preview.png)
+
 ## Features
 
 ### Character Creation
