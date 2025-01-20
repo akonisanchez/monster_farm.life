@@ -18,6 +18,7 @@ A retro-style monster training simulator where you can raise and train different
 
 ### Training System
 ![Training Interface](app/assets/images/training_preview.png)
+
 Four different training exercises available:
 - **Sled Pull**: Increases Power stat (1-5 points)
 - **Parry**: Improves Defense stat (1-5 points)
@@ -31,6 +32,7 @@ Each training attempt has:
 
 ### Stats System
 ![Stats Display](app/assets/images/stats_preview.png)
+
 All monsters have five stats:
 - Power (PWR)
 - Speed (SPD)
