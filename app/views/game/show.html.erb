@@ -99,11 +99,26 @@
           
           <div class="menu pixel-box">
             <div class="menu-options">
-                <%= button_to "🏋️ SLED PULL", train_path(drill: "sled_pull"), class: "menu-button", "data-tooltip": "Increases POWER" %>
-                <%= button_to "🛡️ PARRY", train_path(drill: "parry"), class: "menu-button", "data-tooltip": "Increases DEFENSE" %>
-                <%= button_to "🧘 MEDITATE", train_path(drill: "meditate"), class: "menu-button", "data-tooltip": "Increases HEALTH" %>
-                <%= button_to "🏃 200M DASH", train_path(drill: "dash"), class: "menu-button", "data-tooltip": "Increases SPEED" %>
-                <%= button_to "💤 REST", rest_path, class: "menu-button rest", "data-tooltip": "Reduces tiredness" %>
+                <%= button_to "🏋️ SLED PULL", train_path(drill: "sled_pull"), 
+                class: "menu-button", 
+                "data-tooltip": "Increases POWER (Press P)",
+                "data-training": "power" %>
+                <%= button_to "🛡️ PARRY", train_path(drill: "parry"), 
+                class: "menu-button",
+                "data-tooltip": "Increases DEFENSE (Press D)",
+                "data-training": "defense" %>
+                <%= button_to "🧘 MEDITATE", train_path(drill: "meditate"),
+                class: "menu-button",
+                "data-tooltip": "Increases HEALTH (Press H)",
+                "data-training": "health" %>
+                <%= button_to "🏃 200M DASH", train_path(drill: "dash"), 
+                class: "menu-button",
+                "data-tooltip": "Increases SPEED (Press S)",
+                "data-training": "speed" %>
+                <%= button_to "💤 REST", rest_path,
+                class: "menu-button rest",
+                "data-tooltip": "Reduces tiredness (Press R)",
+                "data-training": "rest" %>
             </div>
           </div>
         </div>
