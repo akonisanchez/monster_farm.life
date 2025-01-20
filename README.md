@@ -30,6 +30,16 @@ Each training attempt has:
 - Increases tiredness by 1 if successful
 - Increases tiredness by 2 if failed
 
+### Keyboard Shortcuts
+![Keyboard Shortcuts](app/assets/images/shortcuts.png)
+
+Train your monster faster with keyboard shortcuts:
+- **P**: Sled Pull (Power training)
+- **D**: Parry (Defense training)
+- **S**: 200M Dash (Speed training)
+- **H**: Meditate (Health training)
+- **R**: Rest your monster
+
 ### Stats System
 ![Stats Display](app/assets/images/stats_preview.png)
 
