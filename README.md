@@ -31,7 +31,7 @@ Each training attempt has:
 - Increases tiredness by 2 if failed
 
 ### Keyboard Shortcuts
-![Keyboard Shortcuts](app/assets/images/shortcuts.png)
+![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.png)
 
 Train your monster faster with keyboard shortcuts:
 - **P**: Sled Pull (Power training)
@@ -54,6 +54,9 @@ Stats have these properties:
 - Maximum stat value is 999
 - Maximum tiredness is 10
 - Monster faints when tiredness reaches 10
+
+![Gameover](app/assets/images/gameover.gif)
+
 - Rest option reduces tiredness by 1-2 points
 
 ## How to Run the Game
@@ -87,7 +90,11 @@ Before starting, make sure you have these installed:
   
 ![Welcome](app/assets/images/welcome.gif)
 - Create an account with a username and password
+
+![Login](app/assets/images/login.gif)
 - Select your starter monster
+
+![Monster Select](app/assets/images/monster_select.gif)
 
 ### 2. Training Your Monster
 - Use training buttons to increase stats
