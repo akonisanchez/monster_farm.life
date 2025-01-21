@@ -84,6 +84,8 @@ Before starting, make sure you have these installed:
 
 ### 1. Getting Started
 - Click "Start Your Journey" on the welcome page
+  
+![Welcome](app/assets/images/welcome.gif)
 - Create an account with a username and password
 - Select your starter monster
 
