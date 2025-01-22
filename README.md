@@ -97,6 +97,9 @@ Before starting, make sure you have these installed:
 ![Monster Select](app/assets/images/monster_select.gif)
 
 ### 2. Training Your Monster
+
+![Training Demo](app/assets/images/training_demo.gif)
+
 - Use training buttons to increase stats
 - Watch the stat bars grow with successful training
 - Rest your monster when tiredness gets high
