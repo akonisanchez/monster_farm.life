@@ -46,7 +46,7 @@ Each training attempt has:
 - If unsuccesful, increases tiredness by 2 
   
 ### Keyboard Shortcuts
-![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.png)
+![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
 
 Train your monster faster with keyboard shortcuts:
 - **P**: Sled Pull (Power training)
