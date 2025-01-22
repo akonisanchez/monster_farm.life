@@ -16,30 +16,6 @@ A retro-style monster training simulator where you can raise and train different
   - **Enoki** (High Health) - Poisonous monster with medicinal properties
   - **Shinka** (Strong Overall) - Monster with army-like vitality
 
-### Training System
-![Training Interface](app/assets/images/training_preview.png)
-
-Four different training exercises available:
-- **Sled Pull**: Increases Power stat (1-5 points)
-- **Parry**: Improves Defense stat (1-5 points)
-- **Meditate**: Enhances Health stat (1-7 points)
-- **200M Dash**: Boosts Speed stat (1-5 points)
-
-Each training attempt has:
-- 85% success rate
-- Increases tiredness by 1 if successful
-- Increases tiredness by 2 if failed
-
-### Keyboard Shortcuts
-![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.png)
-
-Train your monster faster with keyboard shortcuts:
-- **P**: Sled Pull (Power training)
-- **D**: Parry (Defense training)
-- **S**: 200M Dash (Speed training)
-- **H**: Meditate (Health training)
-- **R**: Rest your monster
-
 ### Stats System
 ![Stats Display](app/assets/images/stats_preview.png)
 
@@ -54,9 +30,30 @@ Stats have these properties:
 - Maximum stat value is 999
 - Maximum tiredness is 10
 - Monster faints when tiredness reaches 10
+  
+### Training System
+![Training Interface](app/assets/images/training_preview.png)
 
-![Gameover](app/assets/images/gameover.gif)
+Four different training exercises available:
+- **Sled Pull**: Increases Power stat (1-5 points)
+- **Parry**: Improves Defense stat (1-5 points)
+- **Meditate**: Enhances Health stat (1-7 points)
+- **200M Dash**: Boosts Speed stat (1-5 points)
 
+Each training attempt has:
+- 85% success rate
+- If succesful, increases tiredness by 1 
+- If unsuccesful, increases tiredness by 2 
+  
+### Keyboard Shortcuts
+![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.png)
+
+Train your monster faster with keyboard shortcuts:
+- **P**: Sled Pull (Power training)
+- **D**: Parry (Defense training)
+- **S**: 200M Dash (Speed training)
+- **H**: Meditate (Health training)
+- **R**: Rest your monster
 - Rest option reduces tiredness by 1-2 points
 
 ## How to Run the Game
@@ -104,6 +101,8 @@ Before starting, make sure you have these installed:
 - Watch the stat bars grow with successful training
 - Rest your monster when tiredness gets high
 - If your monster faints (10 tiredness), you'll need to choose a new one
+
+![Gameover](app/assets/images/gameover.gif)
 
 ### 3. Tips for Success
 - Balance training with rest
