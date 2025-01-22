@@ -17,7 +17,7 @@ class GameController < ApplicationController
   def train
     result = @monster.train(params[:drill])
     if result.is_a?(Hash) # Training succeeded with stat changes
-      flash[:notice] = "Training successful!"
+      flash[:notice] = build_success_message
       flash[:stat_changes] = result
     else
       flash[:alert] = "Training failed..."
@@ -40,5 +40,18 @@ class GameController < ApplicationController
   def get_monster
     @monster = current_user.monster
     redirect_to monster_selection_path unless @monster
+  end
+
+  # Build success message including any special training events
+  def build_success_message
+    messages = ["Training successful!"]
+    
+    if @monster.feeling_good
+      messages << "#{@monster.name} is feeling good! Next training will be more potent!"
+    elsif @monster.hot_streak && @monster.training_streak == 5
+      messages << "#{@monster.name} is on a hot streak! #{@monster.name} looks motivated!"
+    end
+    
+    messages.join(" ")
   end
 end
