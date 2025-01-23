@@ -44,7 +44,18 @@ Each training attempt has:
 - 85% success rate
 - If succesful, increases tiredness by 1 
 - If unsuccesful, increases tiredness by 2 
-  
+
+#### New Training Features (Added January 2025)
+
+-**Feeling Good Bonus:**
+Occasionally, your monster will **"feel good,"** gaining an extra boost in confidence.
+On the next succesful training attempt, it will receive a larger stat increase bonus ranging from **+10 to +25 points.**
+
+-**Hot Streak System:**
+Your monster can enter a **hot streak** after succeeding in **5 consecutive drills.** 
+While on a hot streak, the next few training attempts will have an **increased success rate**,
+but the success rate will gradually return to normal over time.
+
 ### Keyboard Shortcuts
 ![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
 
