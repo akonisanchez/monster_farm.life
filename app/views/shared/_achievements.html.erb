@@ -1,0 +1,21 @@
+<%# Achievement display section in game UI %>
+<div class="achievements-section pixel-box">
+  <h2 class="section-title">Achievements</h2>
+  
+  <%# Show list of earned achievements %>
+  <% if @monster.achievements.any? %>
+    <div class="achievements-list">
+      <% @monster.achievements.order(earned_at: :desc).each do |achievement| %>
+        <div class="achievement-item">
+          <div class="achievement-name"><%= achievement.name %></div>
+          <div class="achievement-description"><%= achievement.description %></div>
+          <div class="achievement-date">
+            Earned: <%= achievement.monster_achievements.find_by(monster: @monster).earned_at.strftime("%Y-%m-%d") %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="empty-achievements">No achievements yet!</p>
+  <% end %>
+</div>
