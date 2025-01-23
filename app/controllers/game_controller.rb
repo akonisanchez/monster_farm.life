@@ -44,14 +44,14 @@ class GameController < ApplicationController
 
   # Build success message including any special training events
   def build_success_message
-    messages = ["Training successful!"]
-    
+    messages = [ "Training successful!" ]
+
     if @monster.feeling_good
       messages << "#{@monster.name} is feeling good! Next training will be more potent!"
     elsif @monster.hot_streak && @monster.training_streak == 5
       messages << "#{@monster.name} is on a hot streak! #{@monster.name} looks motivated!"
     end
-    
+
     messages.join(" ")
   end
 end
