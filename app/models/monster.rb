@@ -73,7 +73,6 @@ class Monster < ApplicationRecord
   # Allows monster to rest and recover from tiredness
   def rest
     return false if tiredness >= MAX_TIREDNESS
-
     recovery = rand(1..2)
     self.tiredness = [0, tiredness - recovery].max
     reset_streaks
