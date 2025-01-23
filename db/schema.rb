@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_22_230739) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_23_170332) do
+  create_table "achievements", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "monster_achievements", force: :cascade do |t|
+    t.integer "monster_id", null: false
+    t.integer "achievement_id", null: false
+    t.datetime "earned_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_monster_achievements_on_achievement_id"
+    t.index ["monster_id", "achievement_id"], name: "index_monster_achievements_on_monster_id_and_achievement_id", unique: true
+    t.index ["monster_id"], name: "index_monster_achievements_on_monster_id"
+  end
+
   create_table "monsters", force: :cascade do |t|
     t.string "name"
     t.integer "power"
@@ -36,5 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_22_230739) do
     t.integer "gold"
   end
 
+  add_foreign_key "monster_achievements", "achievements"
+  add_foreign_key "monster_achievements", "monsters"
   add_foreign_key "monsters", "users"
 end
