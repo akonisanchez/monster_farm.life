@@ -1,35 +1,30 @@
 class Monster < ApplicationRecord
-  # Relationships
   belongs_to :user, optional: true
   has_many :monster_achievements, dependent: :destroy
   has_many :achievements, through: :monster_achievements
 
-  # Maximum stat values
   MAX_STAT = 999
   MAX_TIREDNESS = 10
 
-  # Achievement tracking counters
-  attribute :hot_streak_count, :integer, default: 0
-  attribute :successful_trainings_count, :integer, default: 0
-  attribute :rest_count, :integer, default: 0
-  attribute :consecutive_rests, :integer, default: 0
-
-  # Validations
   validates :name, presence: true
   validates :power, :speed, :defense, :health,
     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: MAX_STAT }
   validates :tiredness,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: MAX_TIREDNESS }
 
-  # Check for achievements after stats change
   after_save :check_achievements
 
-  # Main training method that handles all monster training activities
+  # Track achievement progress
+  attribute :hot_streak_count, :integer, default: 0
+  attribute :successful_trainings_count, :integer, default: 0
+  attribute :rest_count, :integer, default: 0
+  attribute :consecutive_rests, :integer, default: 0
+
   # rubocop:disable Metrics/MethodLength
   def train(drill_type)
     return false if tiredness >= MAX_TIREDNESS
 
-    # Calculate success chance based on hot streak or use default 85%
+    # Calculate success chance
     base_success_chance = 85
     success_chance = if hot_streak
       [ 100 - (hot_streak_bonus * 5), base_success_chance ].max
@@ -41,14 +36,13 @@ class Monster < ApplicationRecord
     old_stats = { power: power, defense: defense, health: health, speed: speed }
 
     if success
-      # Track successful training streak
-      self.training_streak += 1
+      # Track training success
       self.successful_trainings_count += 1
+      self.training_streak += 1
 
-      # Calculate how much the stat should increase
+      # Calculate and apply stat increase
       stat_increase = calculate_stat_increase(drill_type)
 
-      # Apply the stat increase based on training type
       case drill_type
       when "sled_pull"
         self.power = [ power + stat_increase, MAX_STAT ].min
@@ -60,13 +54,13 @@ class Monster < ApplicationRecord
         self.speed = [ speed + stat_increase, MAX_STAT ].min
       end
 
-      # Check for hot streak and update counter
+      # Update streaks
       if training_streak >= 5
         check_hot_streak
         self.hot_streak_count += 1 if hot_streak
       end
 
-      # 5% chance to trigger "feeling good" bonus state
+      # Check for 5% chance feeling good bonus
       unless feeling_good
         self.feeling_good = rand(100) < 5
       end
@@ -77,29 +71,19 @@ class Monster < ApplicationRecord
       self.tiredness += 2
     end
 
-    if save && success
-      calculate_stat_changes(old_stats)
-    else
-      false
-    end
+    save && success ? calculate_stat_changes(old_stats) : false
   end
   # rubocop:enable Metrics/MethodLength
 
-  # Rest method to recover from tiredness
   def rest
     return false if tiredness >= MAX_TIREDNESS
 
-    recovery = rand(1..2)
-    self.tiredness = [ 0, tiredness - recovery ].max
-    self.rest_count += 1
-
-    if self.tiredness.zero?
-      self.consecutive_rests += 1
-    else
-      self.consecutive_rests = 0
+    if !tiredness.zero?
+      recovery = rand(1..2)
+      self.tiredness = [ 0, tiredness - recovery ].max
+      self.rest_count += 1
     end
 
-    reset_streaks
     save
   end
 
@@ -109,7 +93,6 @@ class Monster < ApplicationRecord
 
   private
 
-  # Achievement checking methods
   def check_achievements
     check_stat_achievements
     check_training_achievements
@@ -138,8 +121,8 @@ class Monster < ApplicationRecord
   end
 
   def check_rest_achievements
-    award_achievement(:well_rested) if rest_count >= 20
-    award_achievement(:sleepy_baby) if consecutive_rests >= 50
+    award_achievement(:well_rested) if rest_count >= 10
+    award_achievement(:sleepy_baby) if rest_count >= 100
   end
 
   def award_achievement(key)
@@ -149,13 +132,9 @@ class Monster < ApplicationRecord
     achievement = Achievement.find_by(name: achievement_data[:name])
     return if achievement.nil? || monster_achievements.exists?(achievement: achievement)
 
-    monster_achievements.create!(
-      achievement: achievement,
-      earned_at: Time.current
-    )
+    monster_achievements.create!(achievement: achievement, earned_at: Time.current)
   end
 
-  # Training helper methods
   def calculate_stat_increase(drill_type)
     base_increase = drill_type == "meditate" ? rand(1..7) : rand(1..5)
 
