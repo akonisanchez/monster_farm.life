@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_16_211504) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_22_230739) do
   create_table "monsters", force: :cascade do |t|
     t.string "name"
     t.integer "power"
@@ -21,6 +21,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_16_211504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.integer "training_streak", default: 0
+    t.boolean "feeling_good", default: false
+    t.boolean "hot_streak", default: false
+    t.integer "hot_streak_bonus", default: 0
     t.index ["user_id"], name: "index_monsters_on_user_id"
   end
 
@@ -29,6 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_16_211504) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gold"
   end
 
   add_foreign_key "monsters", "users"
