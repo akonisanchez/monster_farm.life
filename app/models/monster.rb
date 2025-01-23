@@ -1,10 +1,10 @@
 class Monster < ApplicationRecord
   belongs_to :user, optional: true
-  
+
   # Maximum values for monster stats
   MAX_STAT = 999
   MAX_TIREDNESS = 10
-  
+
   # Ensure all required fields are present and within valid ranges
   validates :name, presence: true
   validates :power, :speed, :defense, :health,
@@ -20,7 +20,7 @@ class Monster < ApplicationRecord
     # Calculate success chance based on hot streak or use default 85%
     base_success_chance = 85
     success_chance = if hot_streak
-      [100 - (hot_streak_bonus * 5), base_success_chance].max
+      [ 100 - (hot_streak_bonus * 5), base_success_chance ].max
     else
       base_success_chance
     end
@@ -31,20 +31,20 @@ class Monster < ApplicationRecord
     if success
       # Track successful training streak
       self.training_streak += 1
-      
+
       # Calculate how much the stat should increase
       stat_increase = calculate_stat_increase(drill_type)
-      
+
       # Apply the stat increase based on training type
       case drill_type
       when "sled_pull"
-        self.power = [power + stat_increase, MAX_STAT].min
+        self.power = [ power + stat_increase, MAX_STAT ].min
       when "parry"
-        self.defense = [defense + stat_increase, MAX_STAT].min
+        self.defense = [ defense + stat_increase, MAX_STAT ].min
       when "meditate"
-        self.health = [health + stat_increase, MAX_STAT].min
+        self.health = [ health + stat_increase, MAX_STAT ].min
       when "dash"
-        self.speed = [speed + stat_increase, MAX_STAT].min
+        self.speed = [ speed + stat_increase, MAX_STAT ].min
       end
 
       # Check if monster achieves hot streak (5+ successful trainings)
@@ -74,7 +74,7 @@ class Monster < ApplicationRecord
   def rest
     return false if tiredness >= MAX_TIREDNESS
     recovery = rand(1..2)
-    self.tiredness = [0, tiredness - recovery].max
+    self.tiredness = [ 0, tiredness - recovery ].max
     reset_streaks
     save
   end
