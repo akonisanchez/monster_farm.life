@@ -273,6 +273,90 @@
     }
   }
 
+/* Achievement System Styles */
+.game-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.game-area {
+  flex: 1;
+}
+
+.side-panel {
+  width: 250px;
+}
+
+.achievements-section {
+  background: #306230;
+  margin-top: 20px;
+  padding: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.section-title {
+  color: #9bbc0f;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 0px #0f380f;
+}
+
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.achievement-item {
+  background: #0f380f;
+  border: 2px solid #9bbc0f;
+  padding: 8px;
+  position: relative;
+}
+
+.achievement-name {
+  color: #FFD700;
+  font-size: 12px;
+  margin-bottom: 4px;
+  text-shadow: 1px 1px 0px #000;
+}
+
+.achievement-description {
+  color: #9bbc0f;
+  font-size: 8px;
+  margin-bottom: 4px;
+}
+
+.achievement-date {
+  color: #6b8e23;
+  font-size: 8px;
+  text-align: right;
+}
+
+.empty-achievements {
+  color: #9bbc0f;
+  font-size: 10px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.achievement-unlock {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
   .welcome-content {
     align-items: center;
     display: flex;
