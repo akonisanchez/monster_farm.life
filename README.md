@@ -67,6 +67,33 @@ Train your monster faster with keyboard shortcuts:
 - **R**: Rest your monster
 - Rest option reduces tiredness by 1-2 points
 
+### Achievement System (Added January 2025)
+Track your monster's growth with unlockable achievements:
+
+#### Stat Achievements
+- **Apprentice Tier** (50 in a stat)
+  - Power Apprentice
+  - Speed Apprentice
+  - Yoga Apprentice (Health)
+  - Tank Apprentice (Defense)
+
+- **Pro Tier** (200 in a stat)
+  - Power Pro
+  - Speed Pro
+  - Yoga Pro
+  - Tank Pro
+
+- **Master Tier** (999 in a stat)
+  - Power Prodigy
+  - Speed Demon
+  - Nirvanic Yogi
+  - Indomitable Tank
+
+#### Special Achievements
+- **Training Expert**: Complete 100 successful training sessions
+- **Hot Streak Master**: Trigger hot streak 5 times
+- **Streaker**: Complete 10 successful trainings in a row
+  
 ## How to Run the Game
 
 ### Requirements
