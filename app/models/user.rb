@@ -10,4 +10,13 @@ class User < ApplicationRecord
             on: :create
 
   has_one :monster, dependent: :destroy
+
+  # Set timezone from browser on signup
+  before_validation :set_default_timezone
+
+  private
+
+  def set_default_timezone
+    self.timezone ||= "UTC"
+  end
 end
