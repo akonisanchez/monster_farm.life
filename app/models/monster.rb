@@ -8,9 +8,9 @@ class Monster < ApplicationRecord
 
   validates :name, presence: true
   validates :power, :speed, :defense, :health,
-    numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: MAX_STAT }
+            numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: MAX_STAT }
   validates :tiredness,
-    numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: MAX_TIREDNESS }
+            numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: MAX_TIREDNESS }
 
   after_save :check_achievements
 
@@ -21,27 +21,31 @@ class Monster < ApplicationRecord
   attribute :consecutive_rests, :integer, default: 0
 
   # rubocop:disable Metrics/MethodLength
+  #
+  # Trains the monster using a drill. If successful, increases relevant stat.
+  # Apply a time-based bonus if it's the right time of day.
+  #
   def train(drill_type)
     return false if tiredness >= MAX_TIREDNESS
 
-    # Calculate success chance
+    # Get possible bonus multiplier based on time
+    time_bonus = calculate_time_bonus(drill_type)
+
     base_success_chance = 85
-    success_chance = if hot_streak
-      [ 100 - (hot_streak_bonus * 5), base_success_chance ].max
-    else
-      base_success_chance
-    end
+    success_chance = hot_streak ? [ 100 - (hot_streak_bonus * 5), base_success_chance ].max : base_success_chance
 
     success = rand(100) < success_chance
     old_stats = { power: power, defense: defense, health: health, speed: speed }
 
     if success
-      # Track training success
       self.successful_trainings_count += 1
       self.training_streak += 1
 
-      # Calculate and apply stat increase
+      # Increase stat based on drill type
       stat_increase = calculate_stat_increase(drill_type)
+
+      # Apply bonus multiplier if it applies
+      stat_increase = (stat_increase * time_bonus[:multiplier]).round if time_bonus[:applies]
 
       case drill_type
       when "sled_pull"
@@ -54,16 +58,14 @@ class Monster < ApplicationRecord
         self.speed = [ speed + stat_increase, MAX_STAT ].min
       end
 
-      # Update streaks
+      # If we reach 5 in a row, check for hot streak
       if training_streak >= 5
         check_hot_streak
         self.hot_streak_count += 1 if hot_streak
       end
 
-      # Check for 5% chance feeling good bonus
-      unless feeling_good
-        self.feeling_good = rand(100) < 5
-      end
+      # 5% chance to feel good if we don't already
+      self.feeling_good = rand(100) < 5 unless feeling_good
 
       self.tiredness += 1
     else
@@ -75,6 +77,9 @@ class Monster < ApplicationRecord
   end
   # rubocop:enable Metrics/MethodLength
 
+  #
+  # Lets the monster rest. Reduces tiredness by 1 or 2.
+  #
   def rest
     return false if tiredness >= MAX_TIREDNESS
 
@@ -87,12 +92,18 @@ class Monster < ApplicationRecord
     save
   end
 
+  #
+  # Checks if monster is too tired (game over).
+  #
   def game_over?
     tiredness >= MAX_TIREDNESS
   end
 
   private
 
+  #
+  # Checks if monster qualifies for any achievements after saving.
+  #
   def check_achievements
     check_stat_achievements
     check_training_achievements
@@ -169,3 +180,38 @@ class Monster < ApplicationRecord
     }.select { |_, v| v > 0 }
   end
 end
+
+#
+# This method checks the user's local time to see if we apply a 1.5x multiplier
+# for certain drills, like power in the morning, speed in the afternoon, etc.
+#
+# rubocop:disable Metrics/MethodLength
+def calculate_time_bonus(drill_type)
+  return { applies: false, multiplier: 1.0 } unless user
+
+  current_hour = Time.current.in_time_zone(user.timezone).hour
+
+  bonus = case current_hour
+  when 6..11
+            { stat: :power, multiplier: 1.5 }
+  when 12..17
+            { stat: :speed, multiplier: 1.5 }
+  when 18..23
+            { stat: :defense, multiplier: 1.5 }
+  else
+            { stat: :health, multiplier: 1.5 }
+  end
+
+  stat_map = {
+    "sled_pull" => :power,
+    "dash"      => :speed,
+    "parry"     => :defense,
+    "meditate"  => :health
+  }
+
+  {
+    applies: stat_map[drill_type] == bonus[:stat],
+    multiplier: bonus[:multiplier]
+  }
+end
+# rubocop:enable Metrics/MethodLength
