@@ -55,3 +55,19 @@ class GameController < ApplicationController
     messages.join(" ")
   end
 end
+
+def build_training_message
+  current_hour = Time.current.in_time_zone(current_user.timezone).hour
+  bonus_message = case current_hour
+  when 6..11
+    "Morning power training bonus active!"
+  when 12..17
+    "Afternoon speed training bonus active!"
+  when 18..23
+    "Evening defense training bonus active!"
+  else
+    "Night health training bonus active!"
+  end
+
+  "Training successful! #{bonus_message}"
+end
