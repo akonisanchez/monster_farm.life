@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_225012) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_26_004017) do
   create_table "achievements", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -68,10 +68,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_225012) do
     t.datetime "updated_at", null: false
     t.integer "gold"
     t.string "timezone", default: "UTC", null: false
+    t.integer "active_monster_id"
+    t.index ["active_monster_id"], name: "index_users_on_active_monster_id"
   end
 
   add_foreign_key "monster_achievements", "achievements"
   add_foreign_key "monster_achievements", "monsters"
   add_foreign_key "monsters", "users"
   add_foreign_key "training_logs", "monsters"
+  add_foreign_key "users", "monsters", column: "active_monster_id"
 end
