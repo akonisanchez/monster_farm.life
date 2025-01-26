@@ -45,7 +45,7 @@ Four different training exercises available:
 - **200M Dash**: Boosts Speed stat (1-5 points)
 
 Each training attempt has:
-- 85% success rate
+- 75% success rate
 - If succesful, increases tiredness by 1 
 - If unsuccesful, increases tiredness by 2 
 
