@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monster: one
+  drill_type: MyString
+  success: false
+  stat_increase: 1
+  time_bonus_applied: false
+  tiredness_before: 1
+  tiredness_after: 1
+
+two:
+  monster: two
+  drill_type: MyString
+  success: false
+  stat_increase: 1
+  time_bonus_applied: false
+  tiredness_before: 1
+  tiredness_after: 1
