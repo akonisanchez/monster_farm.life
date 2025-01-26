@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get "/game", to: "game#show", as: :game
   post "/train", to: "game#train", as: :train
   post "/rest", to: "game#rest", as: :rest
+  post 'monsters/store', to: 'monsters#store', as: 'store_monster'
+  post 'monsters/swap/:id', to: 'monsters#swap', as: 'swap_monster'
+  get 'lab', to: 'users#lab', as: 'lab'
 end
