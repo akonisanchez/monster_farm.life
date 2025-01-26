@@ -12,7 +12,8 @@
   <!-- The main container for our game -->
   <div class="game-container">
     
-    <!-- 1) .game-layout is main flex container with two columns:
+    <!-- 
+      1) .game-layout is main flex container with two columns:
          - .game-boy (left column)
          - .side-panel (right column). -->
     <div class="game-layout">
@@ -184,10 +185,12 @@
           <!-- 2) Show the monsters in stable, with a Swap button -->
           <% stable = current_user.stable_monsters %>
           <% if stable.any? %>
-            <p>You have <%= stable.count %> monster(s) in your stable.</p>
+            <p class="stable-count">You have <%= stable.count %> monster(s) in your stable.</p>
             <% stable.each do |m| %>
               <div class="stable-monster">
-                <strong><%= m.name %></strong>
+                <!-- Display monster GIF -->
+                <%= image_tag monster_image(m), alt: m.name, class: "stable-monster-gif" %>
+                <!-- Swap button -->
                 <%= button_to "Swap In", swap_monster_path(m.id), method: :post, class: "menu-button" %>
               </div>
             <% end %>
