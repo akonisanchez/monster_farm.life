@@ -18,6 +18,7 @@ This application is built with:
 - HTML5
 - CSS3
 - ERB (Embedded Ruby Templates)
+- Javascript (for interactive features like keyboard shortcuts)
 
 ## Features
 
@@ -96,7 +97,8 @@ Your monster will receive larger stat bonuses for various drills based on the ti
 ### Keyboard Shortcuts
 ![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
 
-Train your monster faster with keyboard shortcuts:
+Train your monster faster with these Javascript-based keyboard shortcuts. Users can press specific keys to trigger actions:
+
 - **P**: Sled Pull (Power training)
 - **D**: Parry (Defense training)
 - **S**: 200M Dash (Speed training)
