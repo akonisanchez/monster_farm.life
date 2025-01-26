@@ -1,0 +1,9 @@
+<!-- app/views/game/leaderboard.html.erb -->
+<h2>Leaderboard</h2>
+<ul>
+  <% @leaderboard.each_with_index do |user, index| %>
+    <li>
+      <strong><%= index + 1 %>. <%= user.username %></strong> - Total Stats: <%= user.total_monster_stats %>
+    </li>
+  <% end %>
+</ul>

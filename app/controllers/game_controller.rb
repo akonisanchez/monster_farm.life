@@ -53,6 +53,11 @@ class GameController < ApplicationController
     redirect_to game_path
   end
 
+  # Show leaderboard
+  def leaderboard
+    @leaderboard = User.ranked.limit(5) # Top 5 users
+  end
+
   private
 
   # This gets the user's active monster for game actions
