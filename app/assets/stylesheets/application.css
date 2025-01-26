@@ -286,8 +286,8 @@
 .side-panel {
   /* Pinning side pabel to fo fixed position */
   position: fixed;
-  top: 80px;
-  right: 80px;
+  top: 200px;
+  right: 120px;
   
   /* Setting overall size for the side panel */
   width: 250px;
@@ -461,7 +461,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
   }
   
   .username-display {
