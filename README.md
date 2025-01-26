@@ -9,15 +9,15 @@ A retro-style monster training simulator where you can raise and train different
 This application is built with:
 
 ### Backend
--Ruby 3.2.0
--Ruby on Rails 7.0
--SQLite3 (Database)
--BCrypt (Pw Encryption)
+- Ruby 3.2.0
+- Ruby on Rails 7.0
+- SQLite3 (Database)
+- BCrypt (Pw Encryption)
 
 ### Frontend
--HTML5
--CSS3
--ERB (Embedded Ruby Templates)
+- HTML5
+- CSS3
+- ERB (Embedded Ruby Templates)
 
 ## Features
 
@@ -32,6 +32,9 @@ This application is built with:
   - **Shinka** (Strong Overall) - Monster with army-like vitality
 
 ### Monster Storage
+
+![Stable](app/assets/images/stable.gif)
+
 -Each user can have 1 active monster and store up to 2 monsters in their stable
 -Users can swap their active monster with a monster in storage at any time
 
@@ -71,15 +74,24 @@ Occasionally, your monster will **"feel good,"** gaining an extra boost in confi
 On the next succesful training attempt, it will receive a larger stat increase bonus ranging from **+10 to +25 points.**
 
 -**Hot Streak System:**
+
+![Hot Streak](app/assets/images/hotstreak.gif)
+
 Your monster can enter a **hot streak** after succeeding in **5 consecutive drills.** 
 While on a hot streak, the next few training attempts will have an **increased success rate**,
 but the success rate will gradually return to normal over time.
 
--**Time-based Bonuses:**
-Your monster will receive larger stat bonuses for various drills based on the time of day!
-
 -**Training Logs:**
+
+![Training Log](app/assets/images/training_log.gif)
+
 Keeps track of most recent drill results, calculates your average training success rate, and determines your most succesful drill!
+
+-**Time-based Bonuses:**
+
+![Time Bonus](app/assets/images/time_bonus.gif)
+
+Your monster will receive larger stat bonuses for various drills based on the time of day!
 
 ### Keyboard Shortcuts
 ![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
