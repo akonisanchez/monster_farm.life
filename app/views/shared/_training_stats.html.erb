@@ -1,0 +1,31 @@
+<div class="training-stats pixel-box">
+  <h2 class="section-title">Training Stats</h2>
+  
+  <div class="stat-group">
+    <div class="training-stat">
+      <span class="stat-label">Success Rate:</span>
+      <span class="stat-value"><%= (@monster.success_rate * 100).round %>%</span>
+    </div>
+
+    <% if @monster.best_drill_type %>
+      <div class="training-stat">
+        <span class="stat-label">Best Drill:</span>
+        <span class="stat-value"><%= @monster.best_drill_type.titleize %></span>
+      </div>
+    <% end %>
+
+    <div class="training-log">
+      <% @monster.training_logs.order(created_at: :desc).limit(5).each do |log| %>
+        <div class="log-entry <%= log.success ? 'success' : 'failure' %>">
+          <%= log.drill_type.titleize %>: 
+          <% if log.success %>
+            +<%= log.stat_increase %> 
+            <%= log.time_bonus_applied ? '(Time Bonus!)' : '' %>
+          <% else %>
+            Failed
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
