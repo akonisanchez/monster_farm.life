@@ -9,9 +9,6 @@
         <div class="achievement-item">
           <div class="achievement-name"><%= achievement.name %></div>
           <div class="achievement-description"><%= achievement.description %></div>
-          <div class="achievement-date">
-            Earned: <%= achievement.monster_achievements.find_by(monster: @monster).earned_at.strftime("%Y-%m-%d") %>
-          </div>
         </div>
       <% end %>
     </div>
