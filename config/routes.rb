@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   post 'monsters/store', to: 'monsters#store', as: 'store_monster'
   post 'monsters/swap/:id', to: 'monsters#swap', as: 'swap_monster'
   get 'lab', to: 'users#lab', as: 'lab'
+  get '/leaderboard', to: 'game#leaderboard', as: :leaderboard
 end

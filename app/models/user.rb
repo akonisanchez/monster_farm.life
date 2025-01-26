@@ -11,10 +11,28 @@ class User < ApplicationRecord
 
   has_many :monsters, dependent: :destroy
 
+  # Active monster association
   belongs_to :active_monster, class_name: "Monster", optional: true
 
-  # Set timezone from browser on signup
+  # Callbacks
   before_validation :set_default_timezone
+
+  # Scope to order users by total monster stats
+  scope :ranked, -> {
+    select("users.*,
+            COALESCE(SUM(monsters.power),0) +
+            COALESCE(SUM(monsters.speed),0) +
+            COALESCE(SUM(monsters.defense),0) +
+            COALESCE(SUM(monsters.health),0) AS total_stats")
+      .left_joins(:monsters)
+      .group("users.id")
+      .order("total_stats DESC")
+  }
+
+  # Calculate user total monster stats
+  def total_monster_stats
+    monsters.sum(:power) + monsters.sum(:speed) + monsters.sum(:defense) + monsters.sum(:health)
+  end
 
   # Return the monsters that are not the active one =? stable
   def stable_monsters
