@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     type = params[:monster_type]
     case type
     when "chocobat"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Chocobat",
         power: 25,
         speed: 35,
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     when "flopower"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Flopower",
         power: 30,
         speed: 15,
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     when "galoot"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Galoot",
         power: 33,
         speed: 33,
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     when "pompador"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Pompador",
         power: 22,
         speed: 28,
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     when "enoki"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Enoki",
         power: 15,
         speed: 10,
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
         tiredness: 0
       )
     when "shinka"
-      monster = current_user.create_monster(
+      monster = current_user.monsters.create(
         name: "Shinka",
         power: 30,
         speed: 40,
@@ -73,9 +73,12 @@ class UsersController < ApplicationController
       )
     end
 
+    current_user.update(active_monster_id: monster.id)
+
     redirect_to game_path
   end
   # rubocop:enable Metrics/MethodLength
+
   private
 
   def user_params

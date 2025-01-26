@@ -13,16 +13,15 @@
   <div class="game-container">
     
     <!-- 
-      1) .game-layout is main flex container.
-         It has TWO children:
+      1) .game-layout is main flex container with two columns:
          - .game-boy (left column)
-         - .side-panel (right column).
-    -->
+         - .side-panel (right column). -->
     <div class="game-layout">
       
       <!-- Left Column: The Game Boy area -->
       <div class="game-boy">
         <div class="game-screen">
+
           <% if flash[:notice] %>
             <div class="notice pixel-box"><%= flash[:notice] %></div>
           <% end %>
@@ -165,12 +164,42 @@
       
       <!-- Right Column: fixed-width side panel for Achievements + Training Log -->
       <div class="side-panel">
+        
         <!-- Renders your Achievements partial -->
         <%= render 'shared/achievements' %>
 
         <!-- Renders your Training Stats / Log partial -->
         <%= render 'shared/training_stats' %>
-      </div>
+
+        <!-- Stable Actions: Store or Swap Monsters -->
+        <div class="stable-panel pixel-box" style="margin-top: 20px;">
+          <h2 class="section-title">Stable</h2>
+
+          <!-- 1) Store the current active monster (if any) -->
+          <% if current_user.active_monster %>
+            <%= button_to "Store Monster", store_monster_path, method: :post, class: "menu-button" %>
+          <% else %>
+            <p>No active monster to store.</p>
+          <% end %>
+
+          <!-- 2) Show the monsters in stable, with a Swap button -->
+          <% stable = current_user.stable_monsters %>
+          <% if stable.any? %>
+            <p class="stable-count">You have <%= stable.count %> monster(s) in your stable.</p>
+            <% stable.each do |m| %>
+              <div class="stable-monster">
+                <!-- Display monster GIF -->
+                <%= image_tag monster_image(m), alt: m.name, class: "stable-monster-gif" %>
+                <!-- Swap button -->
+                <%= button_to "Swap In", swap_monster_path(m.id), method: :post, class: "menu-button" %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>No monsters in stable.</p>
+          <% end %>
+        </div>
+
+      </div> <!-- end side-panel -->
 
     </div> <!-- end .game-layout -->
 
