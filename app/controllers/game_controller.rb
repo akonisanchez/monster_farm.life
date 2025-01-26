@@ -10,6 +10,7 @@ class GameController < ApplicationController
       @monster.destroy # Delete the exhausted monster
       render :game_over
     else
+      @recent_logs = @monster.training_logs.order(created_at: :desc).limit(5)
       render :show
     end
   end
