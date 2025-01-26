@@ -4,134 +4,176 @@
   <title>Monster Trainer</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application' %>
+  <!-- Fun pixel font-->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <!-- The main container for our game -->
   <div class="game-container">
-    <div class="game-boy">
-      <div class="game-screen">
-        <% if flash[:notice] %>
-          <div class="notice pixel-box"><%= flash[:notice] %></div>
-        <% end %>
-        <% if flash[:alert] %>
-          <div class="notice alert pixel-box"><%= flash[:alert] %></div>
-        <% end %>
-        
-        <div class="game-layout">
-          <div class="game-area">
-            <div class="monster-display">
-              <h1 class="game-title">MonsterFarm.Life</h1>
-              <div class="monster-sprite">
-                <%= image_tag monster_image(@monster), class: "monster-gif" %>
-              </div>
-              
-              <div class="stats-box pixel-box">
-                <div class="stat-group">
-                  <div class="stat-line">
-                    <span class="stat-label">PWR</span>
-                    <div class="stat-bar-container">
-                      <div class="stat-bar">
-                        <div class="stat-fill power-fill" style="width: <%= (@monster.power.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
+    
+    <!-- 
+      1) .game-layout is main flex container.
+         It has TWO children:
+         - .game-boy (left column)
+         - .side-panel (right column).
+    -->
+    <div class="game-layout">
+      
+      <!-- Left Column: The Game Boy area -->
+      <div class="game-boy">
+        <div class="game-screen">
+          <% if flash[:notice] %>
+            <div class="notice pixel-box"><%= flash[:notice] %></div>
+          <% end %>
+          <% if flash[:alert] %>
+            <div class="notice alert pixel-box"><%= flash[:alert] %></div>
+          <% end %>
+
+          <!-- Monster display-->
+          <div class="monster-display">
+            <h1 class="game-title">MonsterFarm.Life</h1>
+            <div class="monster-sprite">
+              <%= image_tag monster_image(@monster), class: "monster-gif" %>
+            </div>
+
+            <!-- Stats box showing monster stats -->
+            <div class="stats-box pixel-box">
+              <div class="stat-group">
+                
+                <!-- POWER -->
+                <div class="stat-line">
+                  <span class="stat-label">PWR</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar">
+                      <div class="stat-fill power-fill"
+                           style="width: <%= (@monster.power.to_f / Monster::MAX_STAT * 100).to_s %>%;">
                       </div>
-                      <span class="stat-value" style="position: relative;">
-                        <%= @monster.power.to_s.rjust(3, '0') %>
-                        <% if flash[:stat_changes] && flash[:stat_changes]["power"] %>
-                          <span class="stat-increase">+<%= flash[:stat_changes]["power"] %></span>
-                        <% end %>
-                      </span>
                     </div>
-                  </div>
-                  
-                  <div class="stat-line">
-                    <span class="stat-label">SPD</span>
-                    <div class="stat-bar-container">
-                      <div class="stat-bar">
-                        <div class="stat-fill speed-fill" style="width: <%= (@monster.speed.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
-                      </div>
-                      <span class="stat-value" style="position: relative;">
-                        <%= @monster.speed.to_s.rjust(3, '0') %>
-                        <% if flash[:stat_changes] && flash[:stat_changes]["speed"] %>
-                          <span class="stat-increase">+<%= flash[:stat_changes]["speed"] %></span>
-                        <% end %>
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div class="stat-line">
-                    <span class="stat-label">DEF</span>
-                    <div class="stat-bar-container">
-                      <div class="stat-bar">
-                        <div class="stat-fill defense-fill" style="width: <%= (@monster.defense.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
-                      </div>
-                      <span class="stat-value" style="position: relative;">
-                        <%= @monster.defense.to_s.rjust(3, '0') %>
-                        <% if flash[:stat_changes] && flash[:stat_changes]["defense"] %>
-                          <span class="stat-increase">+<%= flash[:stat_changes]["defense"] %></span>
-                        <% end %>
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div class="stat-line">
-                    <span class="stat-label">HP</span>
-                    <div class="stat-bar-container">
-                      <div class="stat-bar">
-                        <div class="stat-fill health-fill" style="width: <%= (@monster.health.to_f / Monster::MAX_STAT * 100).to_s %>%;"></div>
-                      </div>
-                      <span class="stat-value" style="position: relative;">
-                        <%= @monster.health.to_s.rjust(3, '0') %>
-                        <% if flash[:stat_changes] && flash[:stat_changes]["health"] %>
-                          <span class="stat-increase">+<%= flash[:stat_changes]["health"] %></span>
-                        <% end %>
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div class="stat-line">
-                    <span class="stat-label">TIRED</span>
-                    <div class="stat-bar-container">
-                      <div class="stat-bar">
-                        <div class="stat-fill" style="width: <%= (@monster.tiredness.to_f / Monster::MAX_TIREDNESS * 100).to_s %>%;"></div>
-                      </div>
-                      <span class="stat-value"><%= @monster.tiredness %>/10</span>
-                    </div>
+                    <span class="stat-value" style="position: relative;">
+                      <%= @monster.power.to_s.rjust(3, '0') %>
+                      <% if flash[:stat_changes] && flash[:stat_changes]["power"] %>
+                        <span class="stat-increase">+<%= flash[:stat_changes]["power"] %></span>
+                      <% end %>
+                    </span>
                   </div>
                 </div>
-              </div>
-              
-              <div class="menu pixel-box">
-                <div class="menu-options">
-                  <%= button_to "🏋️ SLED PULL", train_path(drill: "sled_pull"), 
-                      class: "menu-button", 
-                      "data-tooltip": "Increases POWER (Press P)",
-                      "data-training": "power" %>
-                  <%= button_to "🛡️ PARRY", train_path(drill: "parry"), 
-                      class: "menu-button",
-                      "data-tooltip": "Increases DEFENSE (Press D)",
-                      "data-training": "defense" %>
-                  <%= button_to "🧘 MEDITATE", train_path(drill: "meditate"),
-                      class: "menu-button",
-                      "data-tooltip": "Increases HEALTH (Press H)",
-                      "data-training": "health" %>
-                  <%= button_to "🏃 200M DASH", train_path(drill: "dash"), 
-                      class: "menu-button",
-                      "data-tooltip": "Increases SPEED (Press S)",
-                      "data-training": "speed" %>
-                  <%= button_to "💤 REST", rest_path,
-                      class: "menu-button rest",
-                      "data-tooltip": "Reduces tiredness (Press R)",
-                      "data-training": "rest" %>
+
+                <!-- SPEED -->
+                <div class="stat-line">
+                  <span class="stat-label">SPD</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar">
+                      <div class="stat-fill speed-fill"
+                           style="width: <%= (@monster.speed.to_f / Monster::MAX_STAT * 100).to_s %>%;">
+                      </div>
+                    </div>
+                    <span class="stat-value" style="position: relative;">
+                      <%= @monster.speed.to_s.rjust(3, '0') %>
+                      <% if flash[:stat_changes] && flash[:stat_changes]["speed"] %>
+                        <span class="stat-increase">+<%= flash[:stat_changes]["speed"] %></span>
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- DEFENSE -->
+                <div class="stat-line">
+                  <span class="stat-label">DEF</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar">
+                      <div class="stat-fill defense-fill"
+                           style="width: <%= (@monster.defense.to_f / Monster::MAX_STAT * 100).to_s %>%;">
+                      </div>
+                    </div>
+                    <span class="stat-value" style="position: relative;">
+                      <%= @monster.defense.to_s.rjust(3, '0') %>
+                      <% if flash[:stat_changes] && flash[:stat_changes]["defense"] %>
+                        <span class="stat-increase">+<%= flash[:stat_changes]["defense"] %></span>
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- HEALTH -->
+                <div class="stat-line">
+                  <span class="stat-label">HP</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar">
+                      <div class="stat-fill health-fill"
+                           style="width: <%= (@monster.health.to_f / Monster::MAX_STAT * 100).to_s %>%;">
+                      </div>
+                    </div>
+                    <span class="stat-value" style="position: relative;">
+                      <%= @monster.health.to_s.rjust(3, '0') %>
+                      <% if flash[:stat_changes] && flash[:stat_changes]["health"] %>
+                        <span class="stat-increase">+<%= flash[:stat_changes]["health"] %></span>
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- TIREDNESS -->
+                <div class="stat-line">
+                  <span class="stat-label">TIRED</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar">
+                      <div class="stat-fill"
+                           style="width: <%= (@monster.tiredness.to_f / Monster::MAX_TIREDNESS * 100).to_s %>%;">
+                      </div>
+                    </div>
+                    <span class="stat-value">
+                      <%= @monster.tiredness %>/10
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div class="side-panel">
-            <%= render 'shared/achievements' %>
-          </div>
-        </div>
+
+            <!-- Menu of training and rest buttons -->
+            <div class="menu pixel-box">
+              <div class="menu-options">
+                <%= button_to "🏋️ SLED PULL", train_path(drill: "sled_pull"),
+                    class: "menu-button",
+                    "data-tooltip": "Increases POWER (Press P)",
+                    "data-training": "power" %>
+
+                <%= button_to "🛡️ PARRY", train_path(drill: "parry"),
+                    class: "menu-button",
+                    "data-tooltip": "Increases DEFENSE (Press D)",
+                    "data-training": "defense" %>
+
+                <%= button_to "🧘 MEDITATE", train_path(drill: "meditate"),
+                    class: "menu-button",
+                    "data-tooltip": "Increases HEALTH (Press H)",
+                    "data-training": "health" %>
+
+                <%= button_to "🏃 200M DASH", train_path(drill: "dash"),
+                    class: "menu-button",
+                    "data-tooltip": "Increases SPEED (Press S)",
+                    "data-training": "speed" %>
+
+                <%= button_to "💤 REST", rest_path,
+                    class: "menu-button rest",
+                    "data-tooltip": "Reduces tiredness (Press R)",
+                    "data-training": "rest" %>
+              </div>
+            </div>
+          </div> <!-- end monster-display -->
+        </div> <!-- end .game-screen -->
+      </div> <!-- end .game-boy -->
+      
+      <!-- Right Column: fixed-width side panel for Achievements + Training Log -->
+      <div class="side-panel">
+        <!-- Renders your Achievements partial -->
+        <%= render 'shared/achievements' %>
+
+        <!-- Renders your Training Stats / Log partial -->
+        <%= render 'shared/training_stats' %>
       </div>
-    </div>
-  </div>
+
+    </div> <!-- end .game-layout -->
+
+  </div> <!-- end .game-container -->
 </body>
 </html>
