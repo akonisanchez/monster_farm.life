@@ -16,6 +16,10 @@ A retro-style monster training simulator where you can raise and train different
   - **Enoki** (High Health) - Poisonous monster with medicinal properties
   - **Shinka** (Strong Overall) - Monster with army-like vitality
 
+### Monster Storage
+-Each user can have 1 active monster and store up to 2 monsters in their stable
+-Users can swap their active monster with a monster in storage at any time
+
 ### Stats System
 ![Stats Display](app/assets/images/stats_preview.png)
 
@@ -55,6 +59,12 @@ On the next succesful training attempt, it will receive a larger stat increase b
 Your monster can enter a **hot streak** after succeeding in **5 consecutive drills.** 
 While on a hot streak, the next few training attempts will have an **increased success rate**,
 but the success rate will gradually return to normal over time.
+
+-**Time-based Bonuses:**
+Your monster will receive larger stat bonuses for various drills based on the time of day!
+
+-**Training Logs:**
+Keeps track of most recent drill results, calculates your average training success rate, and determines your most succesful drill!
 
 ### Keyboard Shortcuts
 ![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
