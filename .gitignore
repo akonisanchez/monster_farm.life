@@ -32,3 +32,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+.DS_Store
+
+#Ignore sensitive files
+credentials.yml.enc
+db/*.sqlite3
+db/*.sqlite3-journal
