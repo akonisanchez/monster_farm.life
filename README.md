@@ -95,6 +95,8 @@ Train your monster faster with keyboard shortcuts:
 ### Achievement System (Added January 2025)
 Track your monster's growth with unlockable achievements:
 
+![Achievements](app/assets/images/achievements.gif)
+
 #### Stat Achievements
 - **Apprentice Tier** (50 in a stat)
   - Power Apprentice
