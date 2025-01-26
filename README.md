@@ -4,6 +4,21 @@ A retro-style monster training simulator where you can raise and train different
 
 ![Game Preview](app/assets/images/game_preview.png)
 
+## Technical Stack
+
+This application is built with:
+
+### Backend
+-Ruby 3.2.0
+-Ruby on Rails 7.0
+-SQLite3 (Database)
+-BCrypt (Pw Encryption)
+
+### Frontend
+-HTML5
+-CSS3
+-ERB (Embedded Ruby Templates)
+
 ## Features
 
 ### Character Creation
