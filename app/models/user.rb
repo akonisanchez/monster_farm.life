@@ -9,10 +9,27 @@ class User < ApplicationRecord
                      message: "must be at least 6 characters long" },
             on: :create
 
-  has_one :monster, dependent: :destroy
+  has_many :monsters, dependent: :destroy
+
+  belongs_to :active_monster, class_name: "Monster", optional: true
 
   # Set timezone from browser on signup
   before_validation :set_default_timezone
+
+  # Return the monsters that are not the active one =? stable
+  def stable_monsters
+    monsters.where.not(id: active_monster_id)
+  end
+
+  # Stable can have 2 monsters max
+  def stable_full?
+    stable_monsters.count >= 2
+  end
+
+  # Check if user doesn't have a monster on them
+  def needs_monster?
+    active_monster_id.nil?
+  end
 
   private
 

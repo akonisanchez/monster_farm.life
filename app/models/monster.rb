@@ -1,6 +1,8 @@
 class Monster < ApplicationRecord
   # Model relationships
   belongs_to :user
+
+  # When a monster is destroyed, also destroy its achievements and logs
   has_many :monster_achievements, dependent: :destroy
   has_many :achievements, through: :monster_achievements
   has_many :training_logs, dependent: :destroy do
@@ -8,6 +10,9 @@ class Monster < ApplicationRecord
       create(attributes)
     end
   end
+
+  # Before we destroy this monster, nullify active_monster_id if it belongs to this user
+  before_destroy :nullify_user_active_monster
 
   # Maximum limits for monster stats
   MAX_STAT = 999
@@ -76,7 +81,7 @@ class Monster < ApplicationRecord
   def rest
     return false if tiredness >= MAX_TIREDNESS
 
-    if !tiredness.zero?
+    unless tiredness.zero?
       recovery = rand(1..2)
       self.tiredness = [ 0, tiredness - recovery ].max
       self.rest_count += 1
@@ -91,6 +96,13 @@ class Monster < ApplicationRecord
   end
 
   private
+
+  # === Clean Up Before Destroy: Nullify active_monster_id if it points here ===
+  def nullify_user_active_monster
+    if user && user.active_monster_id == id
+      user.update!(active_monster_id: nil)
+    end
+  end
 
   # Core training logic with time bonuses and hot streaks
   # rubocop:disable Metrics/MethodLength
@@ -200,7 +212,7 @@ class Monster < ApplicationRecord
 
   # Calculate stat increase including any feeling_good bonus
   def calculate_stat_increase(drill_type)
-    base_increase = drill_type == "meditate" ? rand(1..7) : rand(1..5)
+    base_increase = (drill_type == "meditate" ? rand(1..7) : rand(1..5))
 
     if feeling_good
       bonus = rand(10..25)
@@ -259,7 +271,6 @@ class Monster < ApplicationRecord
     else         # Night bonus: Health training
               { stat: :health, multiplier: 1.5 }
     end
-    # rubocop:enable Metrics/MethodLength
 
     # Map drill types to stats for bonus checking
     stat_map = {
@@ -274,4 +285,5 @@ class Monster < ApplicationRecord
       multiplier: bonus[:multiplier]
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
