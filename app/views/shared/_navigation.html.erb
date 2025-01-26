@@ -1,9 +1,12 @@
+<!-- app/views/shared/_navigation.html.erb -->
 <div class="nav-container">
   <div class="nav-content">
     <% if logged_in? %>
       <div class="user-info">
         <span class="username-display"><%= current_user.username %></span>
         <%= button_to "LOGOUT", logout_path, method: :delete, class: "menu-button nav-button" %>
+        <%= link_to 'Leaderboard', leaderboard_path, class: "menu-button nav-button" %> <!-- Leaderboard Link -->
+        <%= link_to 'Training', game_path, class: "menu-button nav-button" %> <!-- Training Link -->
       </div>
     <% end %>
   </div>
