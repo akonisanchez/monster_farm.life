@@ -28,9 +28,18 @@
 
 # Ignore database config
 /config/database.yml
+!config/database.yml.example
+
+# Ignore local configuration
+config/local_env.yml
 
 # Ignore coverage reports
 /coverage/*
+
+# Ignore testing files
+.rspec
+/spec/tmp
+.test_queue_stats
 
 # Ignore test reports
 /test/reports/*
@@ -61,3 +70,13 @@ dump.rdb
 
 # Ignore encrypted credentials
 config/credentials/*.key
+
+# Ignore RVM/rbenv files
+.ruby-gemset
+.ruby-version
+
+# Ignore IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
