@@ -1,8 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  <<: *default
+  database: monster_farm_development
+
 test:
-adapter: postgresql
-encoding: unicode
-database: monster_farm_test
-username: postgres
-password: postgres
-host: localhost
-port: 5432
+  <<: *default
+  database: monster_farm_test
+
+production:
+  <<: *default
+  database: monster_farm_production
+  username: <%= ENV['MONSTER_FARM_DATABASE_USERNAME'] %>
+  password: <%= ENV['MONSTER_FARM_DATABASE_PASSWORD'] %>
