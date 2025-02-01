@@ -195,3 +195,11 @@ Before starting, make sure you have these installed:
 - Gold feature
 - Expeditions: Take your monster on expeditions in search of gold and items!
 - Battles: Test your monster's strength against other monsters!
+
+## Security Note
+This is a portfolio project built for educational purposes. Any credentials or keys visible in the commit history are:
+- Example/dummy values used for development
+- Deprecated keys that have been rotated
+- Test credentials that were never used in production
+
+All actual secrets are properly secured using Rails' encrypted credentials system.
