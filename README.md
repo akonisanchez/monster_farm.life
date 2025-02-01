@@ -163,7 +163,7 @@ Before starting, make sure you have these installed:
    * rails db:create
    * rails db:migrate
    * rails game:seed_achievements (required for achievement system)
-   * rails db:seed (Adds sample leaderboard data)
+   * rails db:seed 
 
 5. **Start the Game**
    * rails server
