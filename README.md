@@ -157,8 +157,7 @@ Before starting, make sure you have these installed:
      ```bash
      cp config/database.yml.example config/database.yml
      ```
-   * Update config/database.yml with your PostgreSQL credentials if needed
-
+     
 4. **Set Up the Database**
    * rails db:create
    * rails db:migrate
