@@ -33,15 +33,12 @@ This application is built with:
   - **Shinka** (Strong Overall) - Monster with army-like vitality
 
 ### Monster Storage
+- Each user can have 1 active monster and store up to 2 monsters in their stable
+- Users can swap their active monster with a monster in storage at any time
 
 ![Stable](app/assets/images/stable.gif)
 
--Each user can have 1 active monster and store up to 2 monsters in their stable
--Users can swap their active monster with a monster in storage at any time
-
 ### Stats System
-![Stats Display](app/assets/images/stats_preview.png)
-
 All monsters have five stats:
 - Power (PWR)
 - Speed (SPD)
@@ -49,19 +46,21 @@ All monsters have five stats:
 - Health (HP)
 - Tiredness
 
+![Stats Display](app/assets/images/stats_preview.png)
+
 Stats have these properties:
 - Maximum stat value is 999
 - Maximum tiredness is 10
 - Monster faints when tiredness reaches 10
   
 ### Training System
-![Training Interface](app/assets/images/training_preview.png)
-
 Four different training exercises available:
 - **Sled Pull**: Increases Power stat (1-5 points)
 - **Parry**: Improves Defense stat (1-5 points)
 - **Meditate**: Enhances Health stat (1-7 points)
 - **200M Dash**: Boosts Speed stat (1-5 points)
+
+![Training Interface](app/assets/images/training_preview.png)
 
 Each training attempt has:
 - 75% success rate
@@ -70,33 +69,28 @@ Each training attempt has:
 
 #### New Training Features (Added January 2025)
 
--**Feeling Good Bonus:**
+- **Feeling Good Bonus:**
 Occasionally, your monster will **"feel good,"** gaining an extra boost in confidence.
 On the next succesful training attempt, it will receive a larger stat increase bonus ranging from **+10 to +25 points.**
 
--**Hot Streak System:**
-
+- **Hot Streak System:**
+  - Your monster can enter a **hot streak** after succeeding in **5 consecutive drills.** 
+    While on a hot streak, the next few training attempts will have an **increased success rate**,
+    but the success rate will gradually return to normal over time.
+    
 ![Hot Streak](app/assets/images/hotstreak.gif)
 
-Your monster can enter a **hot streak** after succeeding in **5 consecutive drills.** 
-While on a hot streak, the next few training attempts will have an **increased success rate**,
-but the success rate will gradually return to normal over time.
-
--**Training Logs:**
+- **Training Logs:**
+Keeps track of most recent drill results, calculates your average training success rate, and determines your most succesful drill!
 
 ![Training Log](app/assets/images/training_log.gif)
 
-Keeps track of most recent drill results, calculates your average training success rate, and determines your most succesful drill!
-
--**Time-based Bonuses:**
+- **Time-based Bonuses:**
+Your monster will receive larger stat bonuses for various drills based on the time of day!
 
 ![Time Bonus](app/assets/images/time_bonus.gif)
 
-Your monster will receive larger stat bonuses for various drills based on the time of day!
-
 ### Keyboard Shortcuts
-![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
-
 Train your monster faster with these Javascript-based keyboard shortcuts. Users can press specific keys to trigger actions:
 
 - **P**: Sled Pull (Power training)
@@ -105,6 +99,8 @@ Train your monster faster with these Javascript-based keyboard shortcuts. Users 
 - **H**: Meditate (Health training)
 - **R**: Rest your monster
 - Rest option reduces tiredness by 1-2 points
+
+![Keyboard Shortcuts](app/assets/images/keyboard_shortcuts.gif)
 
 ### Achievement System (Added January 2025)
 Track your monster's growth with unlockable achievements:
