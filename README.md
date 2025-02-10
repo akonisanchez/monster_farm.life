@@ -142,31 +142,40 @@ Before starting, make sure you have these installed:
 ### Step-by-Step Setup
 
 1. **Clone the Repository**
-   * open terminal and type 'git clone https://github.com/akonisanchez/monster_farm.life.git'
-   * cd monster_farm.life
+   ```bash
+   # Open terminal and type:
+   git clone https://github.com/akonisanchez/monster_farm.life.git
+   cd monster_farm.life
+   ```
+3. **Install Ruby Dependencies**
+   ```bash
+   bundle install
+   ```
 
-2. **Install Ruby Dependencies**
-   * bundle install
-
-3. **Set Up Database Configuration**
-   * Copy the example database configuration:
-     ```bash
+5. **Set Up Database Configuration**
+  ```bash
+   # Copy the example database configuration:
      cp config/database.yml.example config/database.yml
-     ```
+  ```
      
-4. **Set Up the Database**
-   * rails db:create
-   * rails db:migrate
-   * rails game:seed_achievements (required for achievement system)
-   * rails db:seed 
+7. **Set Up the Database**
+   ```bash
+   rails db:create
+   rails db:migrate
+   rails game:seed_achievements #required for achievement system)
+   rails db:seed
+   ```
 
-5. **Start the Game**
-   * rails server
-
-6. **Access the Game**
+9. **Start the Game**
+  ```bash
+  rails server
+  ```
+11. **Access the Game**
    * Open your web browser
-   * Go to: 'http://localhost:3000'
-
+   * Go to:
+  ```bash
+  http://localhost:3000
+  ```
 ## Playing the Game
 
 ### 1. Getting Started
