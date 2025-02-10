@@ -143,20 +143,21 @@ Before starting, make sure you have these installed:
 
 1. **Clone the Repository**
    ```bash
-   # Open terminal and type:
+   # Open terminal and clone the repo:
    git clone https://github.com/akonisanchez/monster_farm.life.git
+   # Change directory to where it is saved
    cd monster_farm.life
    ```
 3. **Install Ruby Dependencies**
-   ```bash
-   bundle install
-   ```
+  ```bash
+  bundle install
+  ```
 
 5. **Set Up Database Configuration**
-  ```bash
-   # Copy the example database configuration:
+    ```bash
+     # Copy the example database configuration:
      cp config/database.yml.example config/database.yml
-  ```
+    ```
      
 7. **Set Up the Database**
    ```bash
@@ -167,9 +168,9 @@ Before starting, make sure you have these installed:
    ```
 
 9. **Start the Game**
-  ```bash
-  rails server
-  ```
+    ```bash
+    rails server
+    ```
 11. **Access the Game**
    * Open your web browser
    * Go to:
