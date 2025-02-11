@@ -22,9 +22,9 @@ This application is built with:
 
 ## Features
 
-### Character Creation
+### User Registration and Monster Selection
 - Create an account with a unique username
-- Choose between 6 unique starter monsters:
+- Choose between 6 unique starter monsters created through Piskel:
   - **Chocobat** (High Power/Speed) - A stealthy monster with sonar senses
   - **Flopower** (High Power/Defense) - Former houseplant turned monster
   - **Galoot** (Balanced) - Mysterious creature with unknown potential
