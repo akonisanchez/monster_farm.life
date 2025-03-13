@@ -4,6 +4,12 @@ A retro-style monster training simulator where you can raise and train different
 
 ![Game Preview](app/assets/images/game_preview.png)
 
+## Inspiration
+
+MonsterFarm.Life is my personal love letter to the monster raising games that shaped my childhood. Growing up, I lost track of time playing classics like Pokémon and Dragon Warrior Monsters. There was something special about watching these little pixel creatures get stronger because of your decisions and care.
+
+With MonsterFarm.Life, I wanted to recreate that GameBoy-era magic with all its charm and simplicity. From the pixel art to the training system, everything here is a throwback to what made these games so addictive. No fancy graphics or complicated systems - just the fun of raising a monster and watching it get stronger. If you end up having half as much fun playing it as I had making it, I'll consider this project a success!
+
 ## Technical Stack
 
 This application is built with:
