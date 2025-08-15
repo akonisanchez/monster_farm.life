@@ -169,7 +169,7 @@ Before starting, make sure you have these installed:
    ```bash
    rails db:create
    rails db:migrate
-   rails game:seed_achievements #required for achievement system)
+   rails game:seed_achievements
    rails db:seed
    ```
 
